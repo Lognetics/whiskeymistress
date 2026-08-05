@@ -456,7 +456,7 @@ export const seedFoodSections: MenuSection[] = [
         description: "Prawns, clams, calamari, chilli, white wine, parsley.",
         price_minor: 3150000,
         currency: "NGN",
-        image_url: img("1621996346565-e3dbc353d2e5"),
+        image_url: img("1556761223-4c4282c73f77"),
         availability: "available",
         is_signature: true,
         dietary_tags: [],
@@ -1080,7 +1080,7 @@ export const seedEvents: VenueEvent[] = [
     slug: "ladies-night",
     description:
       "Complimentary welcome cocktail before 10pm, guest DJ, and a dedicated lounge for groups.",
-    banner_url: img("1470229722913-7ea0a2c8d21c"),
+    banner_url: img("1516450360452-9312f5e86fc7"),
     event_date: "2026-08-20",
     start_time: "20:00",
     end_time: "01:00",
@@ -1153,8 +1153,8 @@ export const seedGallery: GalleryImage[] = [
   },
   {
     id: "g-4",
-    image_url: img("1470229722913-7ea0a2c8d21c", 1400),
-    alt: "Live band performing to a full room",
+    image_url: img("1459749411175-04bf5292ceea", 1400),
+    alt: "A full room under warm stage light during a live set",
     category: "Entertainment",
     width: 1400,
     height: 933,
