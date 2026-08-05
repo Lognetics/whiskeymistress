@@ -1,0 +1,222 @@
+"use client";
+
+import Link from "next/link";
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
+import { Menu, Phone, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { Announcement } from "@/lib/types";
+
+const LINKS = [
+  { href: "#about", label: "About" },
+  { href: "#dining", label: "Dining" },
+  { href: "#beverages", label: "Beverages" },
+  { href: "#experiences", label: "VIP Experience" },
+  { href: "#events", label: "Events" },
+  { href: "#gallery", label: "Gallery" },
+  { href: "#private-events", label: "Private Events" },
+  { href: "#contact", label: "Contact" },
+] as const;
+
+interface NavbarProps {
+  brandName: string;
+  phone: string;
+  announcement: Announcement | null;
+}
+
+export function Navbar({ brandName, phone, announcement }: NavbarProps) {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (value) => {
+    setScrolled(value > 40);
+  });
+
+  // Lock the page behind the mobile drawer.
+  useEffect(() => {
+    if (!open) return;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, [open]);
+
+  // Highlight the section currently in view.
+  useEffect(() => {
+    const sections = LINKS.map((link) =>
+      document.querySelector<HTMLElement>(link.href),
+    ).filter((el): el is HTMLElement => Boolean(el));
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.2, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <>
+      {announcement ? (
+        <div className="relative z-50 bg-[linear-gradient(90deg,#8a7024,#d4af37,#8a7024)] text-ink no-print">
+          <div className="container-luxe flex items-center justify-center gap-3 py-2 text-center">
+            <p className="font-ui text-[0.72rem] font-medium tracking-wide sm:text-[0.78rem]">
+              {announcement.message}
+              {announcement.link_href && announcement.link_label ? (
+                <Link
+                  href={announcement.link_href}
+                  className="ml-2 underline underline-offset-4 hover:opacity-70"
+                >
+                  {announcement.link_label}
+                </Link>
+              ) : null}
+            </p>
+          </div>
+        </div>
+      ) : null}
+
+      <motion.header
+        className={`sticky top-0 z-50 no-print transition-all duration-500 ${
+          scrolled
+            ? "glass border-b border-line shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)]"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <nav
+          aria-label="Primary"
+          className="container-luxe flex items-center justify-between"
+          style={{ height: "var(--nav-height)" }}
+        >
+          <Link
+            href="#top"
+            className="group flex flex-col leading-none"
+            aria-label={`${brandName} home`}
+          >
+            <span className="font-display text-[1.1rem] tracking-[0.16em] text-warm transition-colors group-hover:text-gold lg:text-[1.25rem]">
+              {brandName.toUpperCase()}
+            </span>
+            <span className="mt-1 font-ui text-[0.55rem] uppercase tracking-[0.42em] text-gold/80">
+              Abuja
+            </span>
+          </Link>
+
+          <ul className="hidden items-center gap-1 xl:flex">
+            {LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active === link.href ? "true" : undefined}
+                  className={`relative rounded-full px-3.5 py-2 font-ui text-[0.74rem] uppercase tracking-[0.16em] transition-colors duration-300 ${
+                    active === link.href
+                      ? "text-gold"
+                      : "text-warm/70 hover:text-warm"
+                  }`}
+                >
+                  {link.label}
+                  {active === link.href ? (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-x-3.5 -bottom-0.5 h-px bg-gold"
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  ) : null}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-3">
+            <a
+              href={`tel:${phone.replace(/\s/g, "")}`}
+              className="hidden items-center gap-2 font-ui text-[0.76rem] text-warm/75 transition-colors hover:text-gold lg:flex"
+            >
+              <Phone className="size-3.5" aria-hidden />
+              {phone}
+            </a>
+
+            <Link
+              href="#reservations"
+              className="hidden rounded-full bg-[linear-gradient(100deg,#a9862a,#d4af37,#a9862a)] bg-[length:200%_auto] px-6 py-2.5 font-ui text-[0.74rem] font-medium uppercase tracking-[0.16em] text-ink transition-all duration-500 hover:bg-[position:right_center] sm:block"
+            >
+              Reserve
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              aria-label={open ? "Close menu" : "Open menu"}
+              className="rounded-full border border-white/12 p-2.5 text-warm transition-colors hover:border-gold hover:text-gold xl:hidden"
+            >
+              {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
+            </button>
+          </div>
+        </nav>
+      </motion.header>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            id="mobile-nav"
+            className="fixed inset-0 z-40 flex flex-col justify-center bg-ink/97 px-8 backdrop-blur-2xl xl:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ul className="flex flex-col gap-1">
+              {LINKS.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + i * 0.04, duration: 0.4 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block border-b border-white/6 py-4 font-display text-2xl text-warm transition-colors hover:text-gold"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+
+            <motion.div
+              className="mt-10 flex flex-col gap-3"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+            >
+              <Link
+                href="#reservations"
+                onClick={() => setOpen(false)}
+                className="rounded-full bg-gold px-8 py-4 text-center font-ui text-[0.8rem] font-medium uppercase tracking-[0.2em] text-ink"
+              >
+                Reserve a Table
+              </Link>
+              <a
+                href={`tel:${phone.replace(/\s/g, "")}`}
+                className="rounded-full border border-gold/40 px-8 py-4 text-center font-ui text-[0.8rem] uppercase tracking-[0.2em] text-champagne"
+              >
+                {phone}
+              </a>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
+  );
+}

@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Whiskey Mistress — design tokens
+   Matte black canvas, champagne-to-metallic gold accents, warm white type.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #0b0b0b;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-soft: #202020;
+  --color-gold: #d4af37;
+  --color-gold-bright: #e8c86a;
+  --color-champagne: #f0e2c0;
+  --color-warm: #f7f7f7;
+  --color-muted: #a3a099;
+  --color-line: rgba(212, 175, 55, 0.18);
+
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-poppins), system-ui, sans-serif;
+  --font-ui: var(--font-inter), system-ui, sans-serif;
+
+  --shadow-luxe: 0 30px 80px -30px rgba(0, 0, 0, 0.9);
+  --shadow-gold: 0 0 0 1px rgba(212, 175, 55, 0.25), 0 24px 60px -28px rgba(212, 175, 55, 0.35);
+
+  --radius-luxe: 1.25rem;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-shimmer: shimmer 6s linear infinite;
+  --animate-kenburns: kenburns 24s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { transform: scale(1.16) translate3d(-1.5%, -1.5%, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* --------------------------------------------------------------------- base */
+
+:root {
+  color-scheme: dark;
+  --nav-height: 4.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-warm);
+  font-family: var(--font-body);
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* Elegant, unobtrusive scrollbar on the dark canvas */
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--color-gold), #8a7024);
+    border-radius: 999px;
+    border: 3px solid var(--color-ink);
+  }
+}
+
+/* Visible, on-brand focus ring for keyboard users only */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- utilities */
+
+@utility container-luxe {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 82rem;
+  padding-inline: 1.5rem;
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
+}
+
+/* Gold gradient text used for headline emphasis and section eyebrows */
+@utility text-gold-gradient {
+  background-image: linear-gradient(
+    100deg,
+    #8a7024 0%,
+    #d4af37 25%,
+    #f6e7b4 50%,
+    #d4af37 75%,
+    #8a7024 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+/* Frosted panel — the core surface of the whole site */
+@utility glass {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.055) 0%,
+    rgba(255, 255, 255, 0.018) 55%,
+    rgba(255, 255, 255, 0.006) 100%
+  );
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glass-gold {
+  background: linear-gradient(
+    155deg,
+    rgba(212, 175, 55, 0.14) 0%,
+    rgba(212, 175, 55, 0.04) 60%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+}
+
+/* Hairline gold divider */
+@utility rule-gold {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.55),
+    transparent
+  );
+}
+
+@utility vignette {
+  background: radial-gradient(
+      120% 80% at 50% 0%,
+      transparent 30%,
+      rgba(11, 11, 11, 0.65) 78%,
+      var(--color-ink) 100%
+    );
+}
+
+/* Long-form copy inside CMS-authored blocks */
+@utility prose-luxe {
+  & p {
+    color: var(--color-muted);
+    line-height: 1.85;
+  }
+  & p + p {
+    margin-top: 1.25rem;
+  }
+}
+
+/* ------------------------------------------------- motion & print respect */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .no-print { display: none !important; }
+}
