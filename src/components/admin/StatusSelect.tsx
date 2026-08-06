@@ -37,7 +37,7 @@ export function StatusSelect({
         defaultValue={value}
         disabled={disabled}
         onChange={() => formRef.current?.requestSubmit()}
-        className="rounded-lg border border-white/12 bg-white/[0.03] px-3 py-2 font-ui text-[0.76rem] text-white/80 outline-none transition-colors focus:border-gold/70 disabled:opacity-45 [&>option]:bg-[#141414]"
+        className="rounded-lg border border-white/12 bg-white/[0.03] px-3 py-2 font-ui text-[0.646rem] text-white/80 outline-none transition-colors focus:border-gold/70 disabled:opacity-45 [&>option]:bg-[#141414]"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
@@ -46,7 +46,7 @@ export function StatusSelect({
         ))}
       </select>
       {state.status === "error" ? (
-        <p role="alert" className="mt-1 text-[0.7rem] text-red-300">
+        <p role="alert" className="mt-1 text-[0.595rem] text-red-300">
           {state.message}
         </p>
       ) : null}

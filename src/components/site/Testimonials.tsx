@@ -66,7 +66,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
               ))}
             </div>
 
-            <p className="font-display text-[clamp(1.15rem,2.6vw,1.75rem)] leading-[1.55] text-warm/90">
+            <p className="font-display text-[clamp(0.9775rem,2.21vw,1.4875rem)] leading-[1.55] text-warm/90">
               &ldquo;{current.quote}&rdquo;
             </p>
 
@@ -81,11 +81,11 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
                 />
               ) : null}
               <div className="text-left">
-                <p className="font-ui text-[0.9rem] font-medium text-champagne">
+                <p className="font-ui text-[0.765rem] font-medium text-champagne">
                   {current.guest_name}
                 </p>
                 {current.guest_title ? (
-                  <p className="mt-0.5 font-ui text-[0.74rem] uppercase tracking-[0.14em] text-muted">
+                  <p className="mt-0.5 font-ui text-[0.629rem] uppercase tracking-[0.14em] text-muted">
                     {current.guest_title}
                   </p>
                 ) : null}

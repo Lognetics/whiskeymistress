@@ -54,7 +54,7 @@ export function MenuBoard({ sections, variant = "food" }: MenuBoardProps) {
               aria-controls={`panel-${section.id}`}
               id={`tab-${section.id}`}
               onClick={() => setActiveId(section.id)}
-              className={`relative shrink-0 snap-start rounded-full px-5 py-2.5 font-ui text-[0.74rem] uppercase tracking-[0.16em] transition-colors duration-400 ${
+              className={`relative shrink-0 snap-start rounded-full px-5 py-2.5 font-ui text-[0.629rem] uppercase tracking-[0.16em] transition-colors duration-400 ${
                 selected
                   ? "text-ink"
                   : "border border-white/10 text-warm/65 hover:border-gold/40 hover:text-warm"
@@ -86,7 +86,7 @@ export function MenuBoard({ sections, variant = "food" }: MenuBoardProps) {
           className="mt-12"
         >
           {active.description ? (
-            <p className="mx-auto mb-10 max-w-xl text-center text-[0.92rem] italic text-muted">
+            <p className="mx-auto mb-10 max-w-xl text-center text-[0.782rem] italic text-muted">
               {active.description}
             </p>
           ) : null}
@@ -151,7 +151,7 @@ function MenuCard({
             aria-hidden
           />
           {item.is_signature ? (
-            <span className="glass-gold absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-ui text-[0.6rem] uppercase tracking-[0.18em] text-champagne">
+            <span className="glass-gold absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-ui text-[0.51rem] uppercase tracking-[0.18em] text-champagne">
               <Sparkles className="size-3" aria-hidden />
               Signature
             </span>
@@ -161,23 +161,23 @@ function MenuCard({
 
       <div className="p-6">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="font-display text-[1.15rem] leading-snug text-warm transition-colors group-hover:text-champagne">
+          <h3 className="font-display text-[0.9775rem] leading-snug text-warm transition-colors group-hover:text-champagne">
             {item.name}
           </h3>
-          <p className="shrink-0 font-ui text-[0.95rem] font-medium tracking-tight text-gold">
+          <p className="shrink-0 font-ui text-[0.8075rem] font-medium tracking-tight text-gold">
             {formatPrice(item.price_minor, item.currency)}
           </p>
         </div>
 
         {item.description ? (
-          <p className="mt-3 text-[0.86rem] leading-relaxed text-muted">
+          <p className="mt-3 text-[0.731rem] leading-relaxed text-muted">
             {item.description}
           </p>
         ) : null}
 
         <div className="mt-5 flex flex-wrap items-center gap-2">
           <span
-            className={`rounded-full border px-2.5 py-1 font-ui text-[0.6rem] uppercase tracking-[0.16em] ${
+            className={`rounded-full border px-2.5 py-1 font-ui text-[0.51rem] uppercase tracking-[0.16em] ${
               AVAILABILITY_STYLE[item.availability] ?? AVAILABILITY_STYLE.available
             }`}
           >
@@ -187,7 +187,7 @@ function MenuCard({
           {item.dietary_tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 px-2.5 py-1 font-ui text-[0.6rem] uppercase tracking-[0.16em] text-muted"
+              className="rounded-full border border-white/10 px-2.5 py-1 font-ui text-[0.51rem] uppercase tracking-[0.16em] text-muted"
             >
               {tag}
             </span>

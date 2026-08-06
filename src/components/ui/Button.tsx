@@ -17,9 +17,9 @@ const VARIANTS: Record<Variant, string> = {
 };
 
 const SIZES: Record<Size, string> = {
-  sm: "px-5 py-2.5 text-[0.78rem]",
-  md: "px-7 py-3.5 text-[0.82rem]",
-  lg: "px-9 py-4 text-[0.86rem]",
+  sm: "px-5 py-2.5 text-[0.663rem]",
+  md: "px-7 py-3.5 text-[0.697rem]",
+  lg: "px-9 py-4 text-[0.731rem]",
 };
 
 function classes(variant: Variant, size: Size, className?: string) {

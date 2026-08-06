@@ -6,7 +6,7 @@ import { useState, type FormEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 const CONTROL =
-  "w-full rounded-lg border border-white/12 bg-white/[0.03] px-3.5 py-3 font-ui text-[0.88rem] text-white/90 placeholder:text-white/25 outline-none transition-colors focus:border-gold/70";
+  "w-full rounded-lg border border-white/12 bg-white/[0.03] px-3.5 py-3 font-ui text-[0.748rem] text-white/90 placeholder:text-white/25 outline-none transition-colors focus:border-gold/70";
 
 export function LoginForm() {
   const router = useRouter();
@@ -48,7 +48,7 @@ export function LoginForm() {
       {error ? (
         <p
           role="alert"
-          className="rounded-lg border border-red-400/25 bg-red-500/10 px-4 py-3 font-ui text-[0.82rem] text-red-200"
+          className="rounded-lg border border-red-400/25 bg-red-500/10 px-4 py-3 font-ui text-[0.697rem] text-red-200"
         >
           {error}
         </p>
@@ -57,7 +57,7 @@ export function LoginForm() {
       <div>
         <label
           htmlFor="email"
-          className="mb-2 block font-ui text-[0.68rem] uppercase tracking-[0.16em] text-white/45"
+          className="mb-2 block font-ui text-[0.578rem] uppercase tracking-[0.16em] text-white/45"
         >
           Email
         </label>
@@ -74,7 +74,7 @@ export function LoginForm() {
       <div>
         <label
           htmlFor="password"
-          className="mb-2 block font-ui text-[0.68rem] uppercase tracking-[0.16em] text-white/45"
+          className="mb-2 block font-ui text-[0.578rem] uppercase tracking-[0.16em] text-white/45"
         >
           Password
         </label>
@@ -91,7 +91,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 font-ui text-[0.82rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
+        className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 font-ui text-[0.697rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {pending ? <Loader2 className="size-4 animate-spin" aria-hidden /> : null}
         Sign in

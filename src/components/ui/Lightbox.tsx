@@ -78,7 +78,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
           }}
         >
           <div className="flex items-center justify-between px-5 py-5 lg:px-10">
-            <p className="font-ui text-[0.72rem] uppercase tracking-[0.3em] text-muted">
+            <p className="font-ui text-[0.612rem] uppercase tracking-[0.3em] text-muted">
               {current.category} · {index + 1} / {images.length}
             </p>
             <button
@@ -122,7 +122,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
                 className="max-h-[70vh] w-auto rounded-xl object-contain shadow-luxe"
                 priority
               />
-              <figcaption className="mt-5 max-w-2xl text-center text-[0.88rem] text-muted">
+              <figcaption className="mt-5 max-w-2xl text-center text-[0.748rem] text-muted">
                 {current.alt}
               </figcaption>
             </motion.figure>

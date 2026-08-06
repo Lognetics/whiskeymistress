@@ -28,7 +28,7 @@ export default async function AdminLayout({
           <h1 className="font-display text-2xl text-white/90">
             Account not authorised
           </h1>
-          <p className="mt-4 font-ui text-[0.86rem] leading-relaxed text-white/50">
+          <p className="mt-4 font-ui text-[0.731rem] leading-relaxed text-white/50">
             You are signed in as{" "}
             <span className="text-white/80">{access.email}</span>, but this account
             has no staff record. Ask an owner to add your user id to the{" "}
@@ -38,14 +38,14 @@ export default async function AdminLayout({
           <form action={signOut} className="mt-8">
             <button
               type="submit"
-              className="rounded-lg border border-white/15 px-6 py-2.5 font-ui text-[0.8rem] text-white/70 hover:border-white/30"
+              className="rounded-lg border border-white/15 px-6 py-2.5 font-ui text-[0.68rem] text-white/70 hover:border-white/30"
             >
               Sign out
             </button>
           </form>
           <Link
             href="/"
-            className="mt-6 block font-ui text-[0.78rem] text-gold/80 hover:text-gold"
+            className="mt-6 block font-ui text-[0.663rem] text-gold/80 hover:text-gold"
           >
             ← Back to the site
           </Link>

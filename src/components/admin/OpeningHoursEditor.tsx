@@ -9,7 +9,7 @@ import { dayName } from "@/lib/format";
 import type { OpeningHour } from "@/lib/types";
 
 const CONTROL =
-  "rounded-lg border border-white/12 bg-white/[0.03] px-3 py-2 font-ui text-[0.82rem] text-white/85 outline-none transition-colors focus:border-gold/70 disabled:opacity-45";
+  "rounded-lg border border-white/12 bg-white/[0.03] px-3 py-2 font-ui text-[0.697rem] text-white/85 outline-none transition-colors focus:border-gold/70 disabled:opacity-45";
 
 export function OpeningHoursEditor({
   hours,
@@ -54,14 +54,14 @@ function DayRow({
       >
         <input type="hidden" name="day_of_week" value={day} />
 
-        <p className="w-28 shrink-0 font-ui text-[0.88rem] text-white/85">
+        <p className="w-28 shrink-0 font-ui text-[0.748rem] text-white/85">
           {dayName(day)}
         </p>
 
         <div>
           <label
             htmlFor={`opens-${day}`}
-            className="mb-1.5 block font-ui text-[0.62rem] uppercase tracking-[0.14em] text-white/35"
+            className="mb-1.5 block font-ui text-[0.527rem] uppercase tracking-[0.14em] text-white/35"
           >
             Opens
           </label>
@@ -78,7 +78,7 @@ function DayRow({
         <div>
           <label
             htmlFor={`closes-${day}`}
-            className="mb-1.5 block font-ui text-[0.62rem] uppercase tracking-[0.14em] text-white/35"
+            className="mb-1.5 block font-ui text-[0.527rem] uppercase tracking-[0.14em] text-white/35"
           >
             Closes
           </label>
@@ -95,7 +95,7 @@ function DayRow({
         <div className="min-w-0 flex-1">
           <label
             htmlFor={`note-${day}`}
-            className="mb-1.5 block font-ui text-[0.62rem] uppercase tracking-[0.14em] text-white/35"
+            className="mb-1.5 block font-ui text-[0.527rem] uppercase tracking-[0.14em] text-white/35"
           >
             Note
           </label>
@@ -112,7 +112,7 @@ function DayRow({
 
         <label
           htmlFor={`closed-${day}`}
-          className="flex shrink-0 items-center gap-2 pb-2 font-ui text-[0.78rem] text-white/60"
+          className="flex shrink-0 items-center gap-2 pb-2 font-ui text-[0.663rem] text-white/60"
         >
           <input type="hidden" name="is_closed" value="" />
           <input
@@ -131,7 +131,7 @@ function DayRow({
       </form>
 
       {state.status === "error" ? (
-        <p role="alert" className="mt-2 font-ui text-[0.75rem] text-red-300">
+        <p role="alert" className="mt-2 font-ui text-[0.6375rem] text-red-300">
           {state.message}
         </p>
       ) : null}
@@ -151,7 +151,7 @@ function SaveButton({
     <button
       type="submit"
       disabled={disabled || pending}
-      className="shrink-0 rounded-lg border border-white/12 px-4 py-2 font-ui text-[0.76rem] text-white/70 transition-colors hover:border-gold/50 hover:text-gold disabled:opacity-40"
+      className="shrink-0 rounded-lg border border-white/12 px-4 py-2 font-ui text-[0.646rem] text-white/70 transition-colors hover:border-gold/50 hover:text-gold disabled:opacity-40"
     >
       {pending ? (
         <Loader2 className="size-3.5 animate-spin" aria-hidden />

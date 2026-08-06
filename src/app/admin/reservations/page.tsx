@@ -34,7 +34,7 @@ export default async function ReservationsPage() {
       />
 
       {reservations.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-white/12 px-6 py-16 text-center font-ui text-[0.86rem] text-white/40">
+        <p className="rounded-xl border border-dashed border-white/12 px-6 py-16 text-center font-ui text-[0.731rem] text-white/40">
           {access.mode === "preview"
             ? "Connect a Supabase project to start capturing reservations."
             : "No reservations yet."}
@@ -74,13 +74,13 @@ function Group({
     <section aria-labelledby={`${heading.toLowerCase()}-heading`}>
       <h2
         id={`${heading.toLowerCase()}-heading`}
-        className="mb-4 font-ui text-[0.7rem] uppercase tracking-[0.22em] text-white/40"
+        className="mb-4 font-ui text-[0.595rem] uppercase tracking-[0.22em] text-white/40"
       >
         {heading} · {rows.length}
       </h2>
 
       {rows.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-white/10 px-5 py-10 text-center font-ui text-[0.82rem] text-white/30">
+        <p className="rounded-xl border border-dashed border-white/10 px-5 py-10 text-center font-ui text-[0.697rem] text-white/30">
           {emptyLabel}
         </p>
       ) : (
@@ -93,7 +93,7 @@ function Group({
                     <th
                       key={label}
                       scope="col"
-                      className="px-4 py-3.5 font-ui text-[0.68rem] uppercase tracking-[0.14em] text-white/40"
+                      className="px-4 py-3.5 font-ui text-[0.578rem] uppercase tracking-[0.14em] text-white/40"
                     >
                       {label}
                     </th>
@@ -108,43 +108,43 @@ function Group({
                   className="border-b border-white/5 align-top last:border-0"
                 >
                   <td className="px-4 py-4">
-                    <p className="font-ui text-[0.86rem] text-white/90">
+                    <p className="font-ui text-[0.731rem] text-white/90">
                       {reservation.full_name}
                     </p>
                     <a
                       href={`tel:${reservation.phone.replace(/\s/g, "")}`}
-                      className="mt-1 block font-ui text-[0.75rem] text-white/45 hover:text-gold"
+                      className="mt-1 block font-ui text-[0.6375rem] text-white/45 hover:text-gold"
                     >
                       {reservation.phone}
                     </a>
                     <a
                       href={`mailto:${reservation.email}`}
-                      className="block font-ui text-[0.75rem] text-white/45 hover:text-gold"
+                      className="block font-ui text-[0.6375rem] text-white/45 hover:text-gold"
                     >
                       {reservation.email}
                     </a>
-                    <p className="mt-1.5 font-ui text-[0.68rem] text-white/25">
+                    <p className="mt-1.5 font-ui text-[0.578rem] text-white/25">
                       Booked {formatDateTime(reservation.created_at)}
                     </p>
                   </td>
-                  <td className="px-4 py-4 font-ui text-[0.82rem] text-white/70">
+                  <td className="px-4 py-4 font-ui text-[0.697rem] text-white/70">
                     {formatDate(reservation.reservation_date)}
                     <span className="mt-0.5 block text-white/45">
                       {formatTime(reservation.reservation_time)}
                     </span>
                   </td>
-                  <td className="px-4 py-4 font-ui text-[0.82rem] text-white/70">
+                  <td className="px-4 py-4 font-ui text-[0.697rem] text-white/70">
                     {reservation.party_size}
                   </td>
-                  <td className="px-4 py-4 font-ui text-[0.8rem] text-white/60">
+                  <td className="px-4 py-4 font-ui text-[0.68rem] text-white/60">
                     {reservation.occasion || "—"}
                     {reservation.seating_preference ? (
-                      <span className="mt-0.5 block text-[0.74rem] text-white/35">
+                      <span className="mt-0.5 block text-[0.629rem] text-white/35">
                         {reservation.seating_preference}
                       </span>
                     ) : null}
                   </td>
-                  <td className="max-w-xs px-4 py-4 font-ui text-[0.8rem] leading-relaxed text-white/55">
+                  <td className="max-w-xs px-4 py-4 font-ui text-[0.68rem] leading-relaxed text-white/55">
                     {reservation.special_requests || "—"}
                   </td>
                   <td className="px-4 py-4">

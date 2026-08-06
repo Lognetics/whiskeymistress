@@ -20,7 +20,7 @@ export default async function InquiriesPage() {
       />
 
       {inquiries.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-white/12 px-6 py-16 text-center font-ui text-[0.86rem] text-white/40">
+        <p className="rounded-xl border border-dashed border-white/12 px-6 py-16 text-center font-ui text-[0.731rem] text-white/40">
           {access.mode === "preview"
             ? "Connect a Supabase project to start capturing enquiries."
             : "No enquiries yet."}
@@ -34,13 +34,13 @@ export default async function InquiriesPage() {
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="min-w-0">
-                  <h2 className="font-ui text-[0.95rem] text-white/90">
+                  <h2 className="font-ui text-[0.8075rem] text-white/90">
                     {inquiry.full_name}
                     {inquiry.company ? (
                       <span className="text-white/40"> · {inquiry.company}</span>
                     ) : null}
                   </h2>
-                  <p className="mt-1.5 flex flex-wrap gap-x-4 font-ui text-[0.78rem] text-white/45">
+                  <p className="mt-1.5 flex flex-wrap gap-x-4 font-ui text-[0.663rem] text-white/45">
                     <a
                       href={`tel:${inquiry.phone.replace(/\s/g, "")}`}
                       className="hover:text-gold"
@@ -76,10 +76,10 @@ export default async function InquiriesPage() {
                   { term: "Budget", value: inquiry.budget_range || "Not specified" },
                 ].map(({ term, value }) => (
                   <div key={term}>
-                    <dt className="font-ui text-[0.66rem] uppercase tracking-[0.14em] text-white/35">
+                    <dt className="font-ui text-[0.561rem] uppercase tracking-[0.14em] text-white/35">
                       {term}
                     </dt>
-                    <dd className="mt-1 font-ui text-[0.84rem] text-white/75">
+                    <dd className="mt-1 font-ui text-[0.714rem] text-white/75">
                       {value}
                     </dd>
                   </div>
@@ -87,12 +87,12 @@ export default async function InquiriesPage() {
               </dl>
 
               {inquiry.message ? (
-                <p className="mt-5 rounded-lg border border-white/6 bg-black/20 p-4 font-ui text-[0.84rem] leading-relaxed text-white/60">
+                <p className="mt-5 rounded-lg border border-white/6 bg-black/20 p-4 font-ui text-[0.714rem] leading-relaxed text-white/60">
                   {inquiry.message}
                 </p>
               ) : null}
 
-              <p className="mt-4 font-ui text-[0.7rem] text-white/25">
+              <p className="mt-4 font-ui text-[0.595rem] text-white/25">
                 Received {formatDateTime(inquiry.created_at)}
               </p>
             </li>

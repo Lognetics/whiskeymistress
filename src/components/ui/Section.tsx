@@ -42,7 +42,7 @@ export function Section({
           <div className={centered ? "max-w-3xl" : "max-w-2xl"}>
             {eyebrow ? (
               <Reveal direction="none">
-                <p className="font-ui text-[0.7rem] font-medium uppercase tracking-[0.42em] text-gold-gradient">
+                <p className="font-ui text-[0.595rem] font-medium uppercase tracking-[0.42em] text-gold-gradient">
                   {eyebrow}
                 </p>
               </Reveal>
@@ -51,7 +51,7 @@ export function Section({
             <Reveal delay={0.06}>
               <h2
                 id={`${id}-heading`}
-                className="mt-5 font-display text-[clamp(2rem,4.6vw,3.4rem)] leading-[1.08] tracking-tight text-warm"
+                className="mt-5 font-display text-[clamp(1.7rem,3.91vw,2.89rem)] leading-[1.08] tracking-tight text-warm"
               >
                 {title}
               </h2>
@@ -66,7 +66,7 @@ export function Section({
 
             {intro ? (
               <Reveal delay={0.16}>
-                <p className="mt-6 text-[0.98rem] leading-relaxed text-muted lg:text-[1.05rem]">
+                <p className="mt-6 text-[0.833rem] leading-relaxed text-muted lg:text-[0.8925rem]">
                   {intro}
                 </p>
               </Reveal>

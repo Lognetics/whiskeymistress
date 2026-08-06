@@ -38,7 +38,7 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
               type="button"
               onClick={() => setFilter(category)}
               aria-pressed={selected}
-              className={`relative rounded-full px-5 py-2.5 font-ui text-[0.72rem] uppercase tracking-[0.16em] transition-colors duration-400 ${
+              className={`relative rounded-full px-5 py-2.5 font-ui text-[0.612rem] uppercase tracking-[0.16em] transition-colors duration-400 ${
                 selected
                   ? "text-ink"
                   : "border border-white/10 text-warm/65 hover:border-gold/40 hover:text-warm"
@@ -90,7 +90,7 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
                 aria-hidden
               />
               <div className="absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 font-ui text-[0.6rem] uppercase tracking-[0.16em] text-warm">
+                <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 font-ui text-[0.51rem] uppercase tracking-[0.16em] text-warm">
                   <Expand className="size-3 text-gold" aria-hidden />
                   {image.category}
                 </span>

@@ -91,7 +91,7 @@ export function Events({ events }: { events: VenueEvent[] }) {
                       day: "numeric",
                     })}
                   </p>
-                  <p className="mt-1 font-ui text-[0.58rem] uppercase tracking-[0.18em] text-warm/75">
+                  <p className="mt-1 font-ui text-[0.493rem] uppercase tracking-[0.18em] text-warm/75">
                     {formatDate(event.event_date, {
                       weekday: undefined,
                       day: undefined,
@@ -102,18 +102,18 @@ export function Events({ events }: { events: VenueEvent[] }) {
                 </div>
 
                 {event.is_featured ? (
-                  <span className="absolute right-4 top-4 rounded-full bg-gold px-3 py-1 font-ui text-[0.58rem] font-medium uppercase tracking-[0.18em] text-ink">
+                  <span className="absolute right-4 top-4 rounded-full bg-gold px-3 py-1 font-ui text-[0.493rem] font-medium uppercase tracking-[0.18em] text-ink">
                     Featured
                   </span>
                 ) : null}
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="font-display text-[1.25rem] leading-snug text-warm">
+                <h3 className="font-display text-[1.0625rem] leading-snug text-warm">
                   {event.title}
                 </h3>
 
-                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-ui text-[0.72rem] text-muted">
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-ui text-[0.612rem] text-muted">
                   <span className="inline-flex items-center gap-1.5">
                     <CalendarDays className="size-3.5 text-gold/80" aria-hidden />
                     {formatDate(event.event_date)}
@@ -125,12 +125,12 @@ export function Events({ events }: { events: VenueEvent[] }) {
                   </span>
                 </div>
 
-                <p className="mt-4 flex-1 text-[0.86rem] leading-relaxed text-muted">
+                <p className="mt-4 flex-1 text-[0.731rem] leading-relaxed text-muted">
                   {event.description}
                 </p>
 
                 {event.ticket_note ? (
-                  <p className="mt-5 inline-flex items-center gap-2 font-ui text-[0.72rem] uppercase tracking-[0.14em] text-gold/85">
+                  <p className="mt-5 inline-flex items-center gap-2 font-ui text-[0.612rem] uppercase tracking-[0.14em] text-gold/85">
                     <Ticket className="size-3.5" aria-hidden />
                     {event.ticket_note}
                   </p>
@@ -138,7 +138,7 @@ export function Events({ events }: { events: VenueEvent[] }) {
 
                 <Link
                   href="#reservations"
-                  className="mt-6 rounded-full border border-gold/40 px-6 py-3 text-center font-ui text-[0.72rem] uppercase tracking-[0.2em] text-champagne transition-all duration-500 hover:border-gold hover:bg-gold/10"
+                  className="mt-6 rounded-full border border-gold/40 px-6 py-3 text-center font-ui text-[0.612rem] uppercase tracking-[0.2em] text-champagne transition-all duration-500 hover:border-gold hover:bg-gold/10"
                 >
                   Reserve
                 </Link>

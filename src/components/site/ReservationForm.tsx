@@ -52,10 +52,10 @@ export function ReservationForm({
             <h3 className="mt-6 font-display text-2xl text-warm">
               Reservation received
             </h3>
-            <p className="mx-auto mt-4 max-w-md text-[0.92rem] leading-relaxed text-muted">
+            <p className="mx-auto mt-4 max-w-md text-[0.782rem] leading-relaxed text-muted">
               {state.message}
             </p>
-            <p className="mt-6 font-ui text-[0.78rem] text-muted">
+            <p className="mt-6 font-ui text-[0.663rem] text-muted">
               Need it sooner? Call{" "}
               <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-gold underline underline-offset-4">
                 {phone}
@@ -77,7 +77,7 @@ export function ReservationForm({
             {state.status === "error" && state.message ? (
               <p
                 role="alert"
-                className="mb-7 flex items-start gap-3 rounded-xl border border-red-400/25 bg-red-500/8 px-4 py-3.5 text-[0.85rem] text-red-200"
+                className="mb-7 flex items-start gap-3 rounded-xl border border-red-400/25 bg-red-500/8 px-4 py-3.5 text-[0.7225rem] text-red-200"
               >
                 <TriangleAlert className="mt-0.5 size-4 shrink-0" aria-hidden />
                 {state.message}
@@ -170,7 +170,7 @@ export function ReservationForm({
 
             <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <SubmitButton />
-              <p className="font-ui text-[0.74rem] text-muted">
+              <p className="font-ui text-[0.629rem] text-muted">
                 Or call{" "}
                 <a
                   href={`tel:${phone.replace(/\s/g, "")}`}

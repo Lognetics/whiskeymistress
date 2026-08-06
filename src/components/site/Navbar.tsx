@@ -70,7 +70,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
       {announcement ? (
         <div className="relative z-50 bg-[linear-gradient(90deg,#8a7024,#d4af37,#8a7024)] text-ink no-print">
           <div className="container-luxe flex items-center justify-center gap-3 py-2 text-center">
-            <p className="font-ui text-[0.72rem] font-medium tracking-wide sm:text-[0.78rem]">
+            <p className="font-ui text-[0.612rem] font-medium tracking-wide sm:text-[0.663rem]">
               {announcement.message}
               {announcement.link_href && announcement.link_label ? (
                 <Link
@@ -102,10 +102,10 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
             className="group flex flex-col leading-none"
             aria-label={`${brandName} home`}
           >
-            <span className="font-display text-[1.1rem] tracking-[0.16em] text-warm transition-colors group-hover:text-gold lg:text-[1.25rem]">
+            <span className="font-display text-[0.935rem] tracking-[0.16em] text-warm transition-colors group-hover:text-gold lg:text-[1.0625rem]">
               {brandName.toUpperCase()}
             </span>
-            <span className="mt-1 font-ui text-[0.55rem] uppercase tracking-[0.42em] text-gold/80">
+            <span className="mt-1 font-ui text-[0.4675rem] uppercase tracking-[0.42em] text-gold/80">
               Abuja
             </span>
           </Link>
@@ -116,7 +116,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
                 <Link
                   href={link.href}
                   aria-current={active === link.href ? "true" : undefined}
-                  className={`relative rounded-full px-3.5 py-2 font-ui text-[0.74rem] uppercase tracking-[0.16em] transition-colors duration-300 ${
+                  className={`relative rounded-full px-3.5 py-2 font-ui text-[0.629rem] uppercase tracking-[0.16em] transition-colors duration-300 ${
                     active === link.href
                       ? "text-gold"
                       : "text-warm/70 hover:text-warm"
@@ -138,7 +138,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
           <div className="flex items-center gap-3">
             <a
               href={`tel:${phone.replace(/\s/g, "")}`}
-              className="hidden items-center gap-2 font-ui text-[0.76rem] text-warm/75 transition-colors hover:text-gold lg:flex"
+              className="hidden items-center gap-2 font-ui text-[0.646rem] text-warm/75 transition-colors hover:text-gold lg:flex"
             >
               <Phone className="size-3.5" aria-hidden />
               {phone}
@@ -146,7 +146,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
 
             <Link
               href="#reservations"
-              className="hidden rounded-full bg-[linear-gradient(100deg,#a9862a,#d4af37,#a9862a)] bg-[length:200%_auto] px-6 py-2.5 font-ui text-[0.74rem] font-medium uppercase tracking-[0.16em] text-ink transition-all duration-500 hover:bg-[position:right_center] sm:block"
+              className="hidden rounded-full bg-[linear-gradient(100deg,#a9862a,#d4af37,#a9862a)] bg-[length:200%_auto] px-6 py-2.5 font-ui text-[0.629rem] font-medium uppercase tracking-[0.16em] text-ink transition-all duration-500 hover:bg-[position:right_center] sm:block"
             >
               Reserve
             </Link>
@@ -203,13 +203,13 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
               <Link
                 href="#reservations"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-gold px-8 py-4 text-center font-ui text-[0.8rem] font-medium uppercase tracking-[0.2em] text-ink"
+                className="rounded-full bg-gold px-8 py-4 text-center font-ui text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink"
               >
                 Reserve a Table
               </Link>
               <a
                 href={`tel:${phone.replace(/\s/g, "")}`}
-                className="rounded-full border border-gold/40 px-8 py-4 text-center font-ui text-[0.8rem] uppercase tracking-[0.2em] text-champagne"
+                className="rounded-full border border-gold/40 px-8 py-4 text-center font-ui text-[0.68rem] uppercase tracking-[0.2em] text-champagne"
               >
                 {phone}
               </a>

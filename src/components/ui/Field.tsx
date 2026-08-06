@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 
 const CONTROL =
-  "w-full rounded-xl border border-white/12 bg-white/[0.03] px-4 py-3.5 font-ui text-[0.92rem] text-warm placeholder:text-muted/55 transition-colors duration-300 outline-none focus:border-gold/70 focus:bg-white/[0.06] disabled:opacity-60 aria-[invalid=true]:border-red-400/70";
+  "w-full rounded-xl border border-white/12 bg-white/[0.03] px-4 py-3.5 font-ui text-[0.782rem] text-warm placeholder:text-muted/55 transition-colors duration-300 outline-none focus:border-gold/70 focus:bg-white/[0.06] disabled:opacity-60 aria-[invalid=true]:border-red-400/70";
 
 interface WrapProps {
   label: string;
@@ -26,7 +26,7 @@ export function FieldShell({
     <div className={className}>
       <label
         htmlFor={name}
-        className="mb-2 block font-ui text-[0.7rem] font-medium uppercase tracking-[0.2em] text-muted"
+        className="mb-2 block font-ui text-[0.595rem] font-medium uppercase tracking-[0.2em] text-muted"
       >
         {label}
         {required ? (
@@ -37,11 +37,11 @@ export function FieldShell({
       </label>
       {children}
       {error ? (
-        <p id={`${name}-error`} role="alert" className="mt-2 text-[0.78rem] text-red-300">
+        <p id={`${name}-error`} role="alert" className="mt-2 text-[0.663rem] text-red-300">
           {error}
         </p>
       ) : hint ? (
-        <p id={`${name}-hint`} className="mt-2 text-[0.78rem] text-muted/75">
+        <p id={`${name}-hint`} className="mt-2 text-[0.663rem] text-muted/75">
           {hint}
         </p>
       ) : null}
@@ -169,7 +169,7 @@ export function Checkbox({
   return (
     <label
       htmlFor={name}
-      className={`flex cursor-pointer items-center gap-3 font-ui text-[0.85rem] text-warm/85 ${className}`}
+      className={`flex cursor-pointer items-center gap-3 font-ui text-[0.7225rem] text-warm/85 ${className}`}
     >
       <input
         id={name}

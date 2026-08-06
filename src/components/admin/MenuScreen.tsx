@@ -104,7 +104,7 @@ export async function MenuScreen({
       <PageHeading title={title} description={description} />
 
       {categoryOptions.length === 0 ? (
-        <p className="mb-6 rounded-xl border border-amber-400/25 bg-amber-500/8 px-5 py-4 font-ui text-[0.82rem] text-amber-200">
+        <p className="mb-6 rounded-xl border border-amber-400/25 bg-amber-500/8 px-5 py-4 font-ui text-[0.697rem] text-amber-200">
           Create a {kind} category first — items must belong to one.
         </p>
       ) : null}

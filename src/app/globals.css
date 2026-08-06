@@ -19,6 +19,32 @@
   --font-body: var(--font-poppins), system-ui, sans-serif;
   --font-ui: var(--font-inter), system-ui, sans-serif;
 
+  /* Type scale, held 15% below Tailwind's defaults so the named utilities
+     (text-sm … text-4xl) match the reduced arbitrary sizes used in markup.
+     Line heights are scaled by the same factor to keep the rhythm. */
+  --text-xs: 0.6375rem;
+  --text-xs--line-height: 0.85rem;
+  --text-sm: 0.7438rem;
+  --text-sm--line-height: 1.0625rem;
+  --text-base: 0.85rem;
+  --text-base--line-height: 1.275rem;
+  --text-lg: 0.9563rem;
+  --text-lg--line-height: 1.4875rem;
+  --text-xl: 1.0625rem;
+  --text-xl--line-height: 1.4875rem;
+  --text-2xl: 1.275rem;
+  --text-2xl--line-height: 1.7rem;
+  --text-3xl: 1.5938rem;
+  --text-3xl--line-height: 1.9125rem;
+  --text-4xl: 1.9125rem;
+  --text-4xl--line-height: 2.125rem;
+  --text-5xl: 2.55rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.1875rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 3.825rem;
+  --text-7xl--line-height: 1;
+
   --shadow-luxe: 0 30px 80px -30px rgba(0, 0, 0, 0.9);
   --shadow-gold: 0 0 0 1px rgba(212, 175, 55, 0.25), 0 24px 60px -28px rgba(212, 175, 55, 0.35);
 

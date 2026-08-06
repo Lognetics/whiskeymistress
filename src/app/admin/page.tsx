@@ -87,7 +87,7 @@ export default async function AdminOverviewPage() {
               className="rounded-xl border border-white/8 bg-white/[0.02] p-5"
             >
               <div className="flex items-start justify-between">
-                <p className="font-ui text-[0.72rem] uppercase tracking-[0.14em] text-white/40">
+                <p className="font-ui text-[0.612rem] uppercase tracking-[0.14em] text-white/40">
                   {label}
                 </p>
                 <Icon className="size-4 text-gold/70" aria-hidden />
@@ -109,14 +109,14 @@ export default async function AdminOverviewPage() {
             </h2>
             <Link
               href="/admin/reservations"
-              className="font-ui text-[0.76rem] text-gold/80 hover:text-gold"
+              className="font-ui text-[0.646rem] text-gold/80 hover:text-gold"
             >
               View all →
             </Link>
           </div>
 
           {upcoming.length === 0 ? (
-            <p className="mt-8 rounded-lg border border-dashed border-white/10 px-5 py-10 text-center font-ui text-[0.84rem] text-white/35">
+            <p className="mt-8 rounded-lg border border-dashed border-white/10 px-5 py-10 text-center font-ui text-[0.714rem] text-white/35">
               {preview
                 ? "Reservations appear here once a database is connected."
                 : "No upcoming reservations yet."}
@@ -129,17 +129,17 @@ export default async function AdminOverviewPage() {
                   className="flex items-center justify-between gap-4 py-3.5"
                 >
                   <div className="min-w-0">
-                    <p className="truncate font-ui text-[0.88rem] text-white/85">
+                    <p className="truncate font-ui text-[0.748rem] text-white/85">
                       {reservation.full_name}
                     </p>
-                    <p className="mt-0.5 font-ui text-[0.75rem] text-white/40">
+                    <p className="mt-0.5 font-ui text-[0.6375rem] text-white/40">
                       {formatDate(reservation.reservation_date)} ·{" "}
                       {formatTime(reservation.reservation_time)} ·{" "}
                       {reservation.party_size}{" "}
                       {reservation.party_size === 1 ? "guest" : "guests"}
                     </p>
                   </div>
-                  <span className="shrink-0 rounded-full border border-white/12 px-2.5 py-1 font-ui text-[0.62rem] uppercase tracking-[0.12em] text-white/55">
+                  <span className="shrink-0 rounded-full border border-white/12 px-2.5 py-1 font-ui text-[0.527rem] uppercase tracking-[0.12em] text-white/55">
                     {reservation.status.replace(/_/g, " ")}
                   </span>
                 </li>
@@ -162,11 +162,11 @@ export default async function AdminOverviewPage() {
                   href={href}
                   className="flex items-center justify-between rounded-lg border border-white/8 px-4 py-3.5 transition-colors hover:border-gold/35"
                 >
-                  <span className="flex items-center gap-3 font-ui text-[0.84rem] text-white/70">
+                  <span className="flex items-center gap-3 font-ui text-[0.714rem] text-white/70">
                     <Icon className="size-4 text-gold/70" aria-hidden />
                     {label}
                   </span>
-                  <span className="font-ui text-[0.9rem] text-white/90">{value}</span>
+                  <span className="font-ui text-[0.765rem] text-white/90">{value}</span>
                 </Link>
               </li>
             ))}

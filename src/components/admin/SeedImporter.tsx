@@ -26,7 +26,7 @@ export function SeedImporter({ disabled = false }: { disabled?: boolean }) {
           <h2 id="seed-heading" className="font-display text-lg text-white/90">
             Import the starter catalogue
           </h2>
-          <p className="mt-2 max-w-2xl font-ui text-[0.84rem] leading-relaxed text-white/45">
+          <p className="mt-2 max-w-2xl font-ui text-[0.714rem] leading-relaxed text-white/45">
             Copies the full demo menu, beverage list, experiences, events, gallery,
             testimonials, opening hours and site copy into your database. Runs only
             while the menu is still empty.
@@ -35,7 +35,7 @@ export function SeedImporter({ disabled = false }: { disabled?: boolean }) {
           {state.message ? (
             <p
               role="status"
-              className={`mt-4 rounded-lg border px-4 py-3 font-ui text-[0.82rem] ${
+              className={`mt-4 rounded-lg border px-4 py-3 font-ui text-[0.697rem] ${
                 state.status === "error"
                   ? "border-red-400/25 bg-red-500/10 text-red-200"
                   : "border-emerald-400/25 bg-emerald-500/10 text-emerald-200"
@@ -60,7 +60,7 @@ function ImportButton({ disabled }: { disabled: boolean }) {
     <button
       type="submit"
       disabled={disabled || pending}
-      className="inline-flex items-center gap-2 rounded-lg border border-gold/40 px-5 py-2.5 font-ui text-[0.8rem] text-gold transition-colors hover:bg-gold/10 disabled:cursor-not-allowed disabled:opacity-45"
+      className="inline-flex items-center gap-2 rounded-lg border border-gold/40 px-5 py-2.5 font-ui text-[0.68rem] text-gold transition-colors hover:bg-gold/10 disabled:cursor-not-allowed disabled:opacity-45"
     >
       {pending ? <Loader2 className="size-4 animate-spin" aria-hidden /> : null}
       {disabled ? "Connect a database first" : "Import starter catalogue"}

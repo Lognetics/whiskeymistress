@@ -26,7 +26,7 @@ export function NewsletterForm() {
           placeholder="Your email address"
           aria-invalid={state.status === "error" ? true : undefined}
           aria-describedby={state.message ? "newsletter-status" : undefined}
-          className="min-w-0 flex-1 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 font-ui text-[0.84rem] text-warm placeholder:text-muted/55 outline-none transition-colors focus:border-gold/70"
+          className="min-w-0 flex-1 rounded-full border border-white/12 bg-white/[0.03] px-5 py-3 font-ui text-[0.714rem] text-warm placeholder:text-muted/55 outline-none transition-colors focus:border-gold/70"
         />
         <SubmitButton />
       </form>
@@ -35,7 +35,7 @@ export function NewsletterForm() {
         <p
           id="newsletter-status"
           role="status"
-          className={`mt-3 font-ui text-[0.76rem] ${
+          className={`mt-3 font-ui text-[0.646rem] ${
             state.status === "error" ? "text-red-300" : "text-gold"
           }`}
         >

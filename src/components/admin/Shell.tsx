@@ -50,7 +50,7 @@ export function Shell({ children, staffEmail, role, preview }: ShellProps) {
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white/85">
       <header className="sticky top-0 z-40 flex items-center justify-between border-b border-white/8 bg-[#0d0d0d]/95 px-5 py-3.5 backdrop-blur lg:hidden">
-        <Link href="/admin" className="font-display text-[0.95rem] tracking-[0.14em]">
+        <Link href="/admin" className="font-display text-[0.8075rem] tracking-[0.14em]">
           WM · ADMIN
         </Link>
         <button
@@ -72,10 +72,10 @@ export function Shell({ children, staffEmail, role, preview }: ShellProps) {
         >
           <div className="px-6 py-7">
             <Link href="/" className="block">
-              <p className="font-display text-[1.05rem] tracking-[0.16em] text-white/95">
+              <p className="font-display text-[0.8925rem] tracking-[0.16em] text-white/95">
                 WHISKEY MISTRESS
               </p>
-              <p className="mt-1.5 font-ui text-[0.58rem] uppercase tracking-[0.34em] text-gold/80">
+              <p className="mt-1.5 font-ui text-[0.493rem] uppercase tracking-[0.34em] text-gold/80">
                 Control Room
               </p>
             </Link>
@@ -92,7 +92,7 @@ export function Shell({ children, staffEmail, role, preview }: ShellProps) {
                       href={href}
                       onClick={() => setOpen(false)}
                       aria-current={active ? "page" : undefined}
-                      className={`flex items-center gap-3 rounded-lg px-3.5 py-2.5 font-ui text-[0.82rem] transition-colors ${
+                      className={`flex items-center gap-3 rounded-lg px-3.5 py-2.5 font-ui text-[0.697rem] transition-colors ${
                         active
                           ? "bg-gold/12 text-gold"
                           : "text-white/55 hover:bg-white/5 hover:text-white/85"
@@ -110,16 +110,16 @@ export function Shell({ children, staffEmail, role, preview }: ShellProps) {
           <div className="mt-auto border-t border-white/8 px-5 py-5">
             {staffEmail ? (
               <>
-                <p className="truncate font-ui text-[0.78rem] text-white/70">
+                <p className="truncate font-ui text-[0.663rem] text-white/70">
                   {staffEmail}
                 </p>
-                <p className="mt-0.5 font-ui text-[0.62rem] uppercase tracking-[0.16em] text-white/35">
+                <p className="mt-0.5 font-ui text-[0.527rem] uppercase tracking-[0.16em] text-white/35">
                   {role}
                 </p>
                 <form action={signOut} className="mt-4">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-lg border border-white/12 px-3.5 py-2 font-ui text-[0.75rem] text-white/60 transition-colors hover:border-white/25 hover:text-white/85"
+                    className="inline-flex items-center gap-2 rounded-lg border border-white/12 px-3.5 py-2 font-ui text-[0.6375rem] text-white/60 transition-colors hover:border-white/25 hover:text-white/85"
                   >
                     <LogOut className="size-3.5" aria-hidden />
                     Sign out
@@ -127,14 +127,14 @@ export function Shell({ children, staffEmail, role, preview }: ShellProps) {
                 </form>
               </>
             ) : (
-              <p className="font-ui text-[0.75rem] text-white/40">
+              <p className="font-ui text-[0.6375rem] text-white/40">
                 Preview mode — no database connected.
               </p>
             )}
 
             <Link
               href="/"
-              className="mt-4 block font-ui text-[0.75rem] text-gold/80 hover:text-gold"
+              className="mt-4 block font-ui text-[0.6375rem] text-gold/80 hover:text-gold"
             >
               ← View live site
             </Link>
@@ -152,7 +152,7 @@ export function Shell({ children, staffEmail, role, preview }: ShellProps) {
 
         <main className="min-w-0 flex-1 px-5 py-8 lg:px-10 lg:py-12">
           {preview ? (
-            <p className="mb-8 rounded-xl border border-gold/25 bg-gold/8 px-5 py-4 font-ui text-[0.82rem] text-gold/90">
+            <p className="mb-8 rounded-xl border border-gold/25 bg-gold/8 px-5 py-4 font-ui text-[0.697rem] text-gold/90">
               Read-only preview. Add Supabase credentials to{" "}
               <code className="rounded bg-black/30 px-1.5 py-0.5">.env.local</code> to
               enable editing.
@@ -174,11 +174,11 @@ export function PageHeading({
 }) {
   return (
     <div className="mb-8">
-      <h1 className="font-display text-[1.9rem] leading-tight text-white/95">
+      <h1 className="font-display text-[1.615rem] leading-tight text-white/95">
         {title}
       </h1>
       {description ? (
-        <p className="mt-2 max-w-2xl font-ui text-[0.86rem] leading-relaxed text-white/45">
+        <p className="mt-2 max-w-2xl font-ui text-[0.731rem] leading-relaxed text-white/45">
           {description}
         </p>
       ) : null}

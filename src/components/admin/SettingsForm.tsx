@@ -8,7 +8,7 @@ import { initialAdminState } from "@/lib/actions/state";
 import type { SiteSettings } from "@/lib/types";
 
 const CONTROL =
-  "w-full rounded-lg border border-white/12 bg-white/[0.03] px-3.5 py-2.5 font-ui text-[0.86rem] text-white/90 placeholder:text-white/25 outline-none transition-colors focus:border-gold/70 disabled:opacity-50 aria-[invalid=true]:border-red-400/70";
+  "w-full rounded-lg border border-white/12 bg-white/[0.03] px-3.5 py-2.5 font-ui text-[0.731rem] text-white/90 placeholder:text-white/25 outline-none transition-colors focus:border-gold/70 disabled:opacity-50 aria-[invalid=true]:border-red-400/70";
 
 interface FieldSpec {
   name: keyof SiteSettings;
@@ -112,7 +112,7 @@ export function SettingsForm({
       {state.message ? (
         <p
           role="status"
-          className={`rounded-lg border px-4 py-3 font-ui text-[0.84rem] ${
+          className={`rounded-lg border px-4 py-3 font-ui text-[0.714rem] ${
             state.status === "error"
               ? "border-red-400/25 bg-red-500/10 text-red-200"
               : "border-emerald-400/25 bg-emerald-500/10 text-emerald-200"
@@ -130,7 +130,7 @@ export function SettingsForm({
         >
           <h2
             id={`${group.heading}-heading`}
-            className="mb-6 font-ui text-[0.7rem] uppercase tracking-[0.22em] text-gold/80"
+            className="mb-6 font-ui text-[0.595rem] uppercase tracking-[0.22em] text-gold/80"
           >
             {group.heading}
           </h2>
@@ -146,7 +146,7 @@ export function SettingsForm({
                 >
                   <label
                     htmlFor={field.name}
-                    className="mb-2 block font-ui text-[0.68rem] uppercase tracking-[0.16em] text-white/45"
+                    className="mb-2 block font-ui text-[0.578rem] uppercase tracking-[0.16em] text-white/45"
                   >
                     {field.label}
                   </label>
@@ -179,12 +179,12 @@ export function SettingsForm({
                     <p
                       id={`${field.name}-error`}
                       role="alert"
-                      className="mt-1.5 text-[0.75rem] text-red-300"
+                      className="mt-1.5 text-[0.6375rem] text-red-300"
                     >
                       {error}
                     </p>
                   ) : field.hint ? (
-                    <p className="mt-1.5 text-[0.75rem] text-white/35">{field.hint}</p>
+                    <p className="mt-1.5 text-[0.6375rem] text-white/35">{field.hint}</p>
                   ) : null}
                 </div>
               );
@@ -206,7 +206,7 @@ function SaveButton({ disabled }: { disabled: boolean }) {
     <button
       type="submit"
       disabled={disabled || pending}
-      className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3 font-ui text-[0.82rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+      className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3 font-ui text-[0.697rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
     >
       {pending ? <Loader2 className="size-4 animate-spin" aria-hidden /> : null}
       Save settings

@@ -45,14 +45,14 @@ export function ResourceManager({
   return (
     <div>
       <div className="mb-6 flex items-center justify-between gap-4">
-        <p className="font-ui text-[0.78rem] text-white/45">
+        <p className="font-ui text-[0.663rem] text-white/45">
           {records.length} {records.length === 1 ? "record" : "records"}
         </p>
         <button
           type="button"
           disabled={readOnly}
           onClick={() => setEditing("new")}
-          className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2.5 font-ui text-[0.78rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+          className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2.5 font-ui text-[0.663rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
         >
           <Plus className="size-4" aria-hidden />
           {addLabel}
@@ -60,7 +60,7 @@ export function ResourceManager({
       </div>
 
       {records.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-white/12 px-6 py-14 text-center font-ui text-[0.86rem] text-white/40">
+        <p className="rounded-xl border border-dashed border-white/12 px-6 py-14 text-center font-ui text-[0.731rem] text-white/40">
           {emptyLabel}
         </p>
       ) : (
@@ -83,11 +83,11 @@ export function ResourceManager({
               ) : null}
 
               <div className="min-w-0 flex-1">
-                <p className="truncate font-ui text-[0.9rem] font-medium text-white/90">
+                <p className="truncate font-ui text-[0.765rem] font-medium text-white/90">
                   {String(read(record, listConfig.primary) ?? "Untitled")}
                 </p>
                 {listConfig.secondary && read(record, listConfig.secondary) ? (
-                  <p className="mt-0.5 truncate font-ui text-[0.78rem] text-white/40">
+                  <p className="mt-0.5 truncate font-ui text-[0.663rem] text-white/40">
                     {String(read(record, listConfig.secondary))}
                   </p>
                 ) : null}
@@ -172,7 +172,7 @@ function Badge({
   };
   return (
     <span
-      className={`rounded-full border px-2 py-0.5 font-ui text-[0.6rem] uppercase tracking-[0.12em] ${tones[tone]}`}
+      className={`rounded-full border px-2 py-0.5 font-ui text-[0.51rem] uppercase tracking-[0.12em] ${tones[tone]}`}
     >
       {children}
     </span>
@@ -220,7 +220,7 @@ function DeleteButton({
       <input type="hidden" name="id" value={id} />
       <button
         type="submit"
-        className="rounded-lg border border-red-400/50 bg-red-500/10 px-3 py-2.5 font-ui text-[0.72rem] text-red-200"
+        className="rounded-lg border border-red-400/50 bg-red-500/10 px-3 py-2.5 font-ui text-[0.612rem] text-red-200"
       >
         {state.status === "error" ? "Retry" : "Confirm"}
       </button>
@@ -304,7 +304,7 @@ function EditorDrawer({
             {state.status === "error" && state.message ? (
               <p
                 role="alert"
-                className="mb-5 rounded-lg border border-red-400/25 bg-red-500/10 px-4 py-3 font-ui text-[0.82rem] text-red-200"
+                className="mb-5 rounded-lg border border-red-400/25 bg-red-500/10 px-4 py-3 font-ui text-[0.697rem] text-red-200"
               >
                 {state.message}
               </p>
@@ -328,7 +328,7 @@ function EditorDrawer({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-white/12 px-5 py-2.5 font-ui text-[0.8rem] text-white/70 hover:border-white/25"
+              className="rounded-lg border border-white/12 px-5 py-2.5 font-ui text-[0.68rem] text-white/70 hover:border-white/25"
             >
               Cancel
             </button>
@@ -341,7 +341,7 @@ function EditorDrawer({
 }
 
 const CONTROL =
-  "w-full rounded-lg border border-white/12 bg-white/[0.03] px-3.5 py-2.5 font-ui text-[0.86rem] text-white/90 placeholder:text-white/25 outline-none transition-colors focus:border-gold/70 aria-[invalid=true]:border-red-400/70";
+  "w-full rounded-lg border border-white/12 bg-white/[0.03] px-3.5 py-2.5 font-ui text-[0.731rem] text-white/90 placeholder:text-white/25 outline-none transition-colors focus:border-gold/70 aria-[invalid=true]:border-red-400/70";
 
 function EditorField({
   field,
@@ -384,7 +384,7 @@ function EditorField({
       <div className={`${span} flex items-center`}>
         <label
           htmlFor={field.name}
-          className="flex cursor-pointer items-center gap-3 font-ui text-[0.86rem] text-white/75"
+          className="flex cursor-pointer items-center gap-3 font-ui text-[0.731rem] text-white/75"
         >
           {/* Unchecked boxes submit nothing, so a paired hidden input keeps
               the field present in FormData for the "false" case. */}
@@ -413,7 +413,7 @@ function EditorField({
     <div className={span}>
       <label
         htmlFor={field.name}
-        className="mb-2 block font-ui text-[0.68rem] uppercase tracking-[0.16em] text-white/45"
+        className="mb-2 block font-ui text-[0.578rem] uppercase tracking-[0.16em] text-white/45"
       >
         {field.label}
         {field.required ? <span className="ml-1 text-gold">*</span> : null}
@@ -472,11 +472,11 @@ function EditorField({
       )}
 
       {error ? (
-        <p id={`${field.name}-error`} role="alert" className="mt-1.5 text-[0.75rem] text-red-300">
+        <p id={`${field.name}-error`} role="alert" className="mt-1.5 text-[0.6375rem] text-red-300">
           {error}
         </p>
       ) : field.hint ? (
-        <p id={`${field.name}-hint`} className="mt-1.5 text-[0.75rem] text-white/35">
+        <p id={`${field.name}-hint`} className="mt-1.5 text-[0.6375rem] text-white/35">
           {field.hint}
         </p>
       ) : null}
@@ -490,7 +490,7 @@ function SaveButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-2.5 font-ui text-[0.8rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
+      className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-2.5 font-ui text-[0.68rem] font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
     >
       {pending ? <Loader2 className="size-4 animate-spin" aria-hidden /> : null}
       Save

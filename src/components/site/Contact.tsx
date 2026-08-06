@@ -79,10 +79,10 @@ export function Contact({
                     <Icon className="size-4 text-gold" aria-hidden />
                   </span>
                   <span className="min-w-0">
-                    <span className="block font-ui text-[0.66rem] uppercase tracking-[0.22em] text-muted">
+                    <span className="block font-ui text-[0.561rem] uppercase tracking-[0.22em] text-muted">
                       {label}
                     </span>
-                    <span className="mt-1.5 block text-[0.9rem] text-warm/90 transition-colors group-hover:text-champagne">
+                    <span className="mt-1.5 block text-[0.765rem] text-warm/90 transition-colors group-hover:text-champagne">
                       {value}
                     </span>
                   </span>
@@ -94,7 +94,7 @@ export function Contact({
 
         <Reveal direction="left" delay={0.12}>
           <div className="glass mt-3 rounded-2xl p-6">
-            <h3 className="font-ui text-[0.66rem] uppercase tracking-[0.22em] text-muted">
+            <h3 className="font-ui text-[0.561rem] uppercase tracking-[0.22em] text-muted">
               Opening Hours
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -103,22 +103,22 @@ export function Contact({
                 return (
                   <li
                     key={hour.id}
-                    className={`flex items-baseline justify-between gap-4 text-[0.86rem] ${
+                    className={`flex items-baseline justify-between gap-4 text-[0.731rem] ${
                       isToday ? "text-champagne" : "text-warm/70"
                     }`}
                   >
                     <span className="flex items-center gap-2">
                       {dayName(hour.day_of_week)}
                       {isToday ? (
-                        <span className="rounded-full bg-gold/15 px-2 py-0.5 font-ui text-[0.55rem] uppercase tracking-[0.16em] text-gold">
+                        <span className="rounded-full bg-gold/15 px-2 py-0.5 font-ui text-[0.4675rem] uppercase tracking-[0.16em] text-gold">
                           Today
                         </span>
                       ) : null}
                     </span>
-                    <span className="text-right font-ui text-[0.82rem] tabular-nums">
+                    <span className="text-right font-ui text-[0.697rem] tabular-nums">
                       {formatHours(hour)}
                       {hour.note ? (
-                        <span className="block text-[0.7rem] text-muted">{hour.note}</span>
+                        <span className="block text-[0.595rem] text-muted">{hour.note}</span>
                       ) : null}
                     </span>
                   </li>

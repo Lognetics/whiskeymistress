@@ -29,7 +29,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
     <footer className="relative border-t border-line bg-charcoal/45 no-print">
       <div className="container-luxe py-20">
         <div className="glass-gold mb-16 flex flex-col items-center gap-6 rounded-[1.75rem] px-8 py-12 text-center">
-          <h2 className="max-w-2xl font-display text-[clamp(1.6rem,3.4vw,2.5rem)] leading-tight text-warm">
+          <h2 className="max-w-2xl font-display text-[clamp(1.36rem,2.89vw,2.125rem)] leading-tight text-warm">
             The table is set. All that&apos;s left is you.
           </h2>
           <ButtonLink href="#reservations" size="lg">
@@ -43,12 +43,12 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               <span className="font-display text-2xl tracking-[0.16em] text-warm">
                 {settings.brand_name.toUpperCase()}
               </span>
-              <span className="mt-2 font-ui text-[0.58rem] uppercase tracking-[0.42em] text-gold/80">
+              <span className="mt-2 font-ui text-[0.493rem] uppercase tracking-[0.42em] text-gold/80">
                 {settings.city} · {settings.country}
               </span>
             </Link>
 
-            <p className="mt-6 max-w-sm text-[0.88rem] leading-relaxed text-muted">
+            <p className="mt-6 max-w-sm text-[0.748rem] leading-relaxed text-muted">
               {settings.tagline}. {settings.address_line}, {settings.city}.
             </p>
 
@@ -72,7 +72,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           </div>
 
           <nav aria-label="Footer" className="lg:col-span-4">
-            <h2 className="font-ui text-[0.66rem] uppercase tracking-[0.26em] text-gold">
+            <h2 className="font-ui text-[0.561rem] uppercase tracking-[0.26em] text-gold">
               Explore
             </h2>
             <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
@@ -80,7 +80,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[0.86rem] text-muted transition-colors hover:text-champagne"
+                    className="text-[0.731rem] text-muted transition-colors hover:text-champagne"
                   >
                     {link.label}
                   </Link>
@@ -90,10 +90,10 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           </nav>
 
           <div className="lg:col-span-4">
-            <h2 className="font-ui text-[0.66rem] uppercase tracking-[0.26em] text-gold">
+            <h2 className="font-ui text-[0.561rem] uppercase tracking-[0.26em] text-gold">
               Stay In The Room
             </h2>
-            <p className="mt-6 text-[0.86rem] leading-relaxed text-muted">
+            <p className="mt-6 text-[0.731rem] leading-relaxed text-muted">
               Early access to event tables, seasonal menus and members-only
               evenings. No noise, only invitations.
             </p>
@@ -106,10 +106,10 @@ export function Footer({ settings }: { settings: SiteSettings }) {
         <div className="rule-gold mt-16" aria-hidden />
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-          <p className="font-ui text-[0.75rem] text-muted">
+          <p className="font-ui text-[0.6375rem] text-muted">
             © {new Date().getFullYear()} {settings.brand_name}. All rights reserved.
           </p>
-          <div className="flex gap-6 font-ui text-[0.75rem] text-muted">
+          <div className="flex gap-6 font-ui text-[0.6375rem] text-muted">
             <a
               href={`tel:${settings.phone.replace(/\s/g, "")}`}
               className="transition-colors hover:text-champagne"

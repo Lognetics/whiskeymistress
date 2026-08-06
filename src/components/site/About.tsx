@@ -44,7 +44,7 @@ export function About({ settings }: { settings: SiteSettings }) {
             {/* Floating credential card — the one asymmetric element on the page. */}
             <div className="glass-gold absolute -bottom-8 -right-4 hidden w-56 rounded-2xl p-6 shadow-luxe sm:block lg:-right-10">
               <p className="font-display text-4xl text-gold-gradient">2019</p>
-              <p className="mt-2 font-ui text-[0.7rem] uppercase tracking-[0.22em] text-warm/70">
+              <p className="mt-2 font-ui text-[0.595rem] uppercase tracking-[0.22em] text-warm/70">
                 Serving Abuja since
               </p>
             </div>
@@ -53,7 +53,7 @@ export function About({ settings }: { settings: SiteSettings }) {
 
         <div>
           <Reveal direction="none">
-            <p className="font-ui text-[0.7rem] font-medium uppercase tracking-[0.42em] text-gold-gradient">
+            <p className="font-ui text-[0.595rem] font-medium uppercase tracking-[0.42em] text-gold-gradient">
               Our Story
             </p>
           </Reveal>
@@ -61,7 +61,7 @@ export function About({ settings }: { settings: SiteSettings }) {
           <Reveal delay={0.06}>
             <h2
               id="about-heading"
-              className="mt-5 font-display text-[clamp(2rem,4.4vw,3.3rem)] leading-[1.1] tracking-tight text-warm"
+              className="mt-5 font-display text-[clamp(1.7rem,3.74vw,2.805rem)] leading-[1.1] tracking-tight text-warm"
             >
               {settings.about_heading}
             </h2>
@@ -87,7 +87,7 @@ export function About({ settings }: { settings: SiteSettings }) {
                   className="glass rounded-2xl px-4 py-5 text-center transition-colors duration-500 hover:border-gold/35"
                 >
                   <Icon className="mx-auto size-5 text-gold" aria-hidden />
-                  <p className="mt-3 font-ui text-[0.68rem] uppercase tracking-[0.14em] text-warm/75">
+                  <p className="mt-3 font-ui text-[0.578rem] uppercase tracking-[0.14em] text-warm/75">
                     {label}
                   </p>
                 </li>

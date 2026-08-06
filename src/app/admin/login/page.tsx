@@ -19,7 +19,7 @@ export default async function LoginPage() {
             <p className="font-display text-xl tracking-[0.16em] text-white/95">
               WHISKEY MISTRESS
             </p>
-            <p className="mt-2 font-ui text-[0.58rem] uppercase tracking-[0.36em] text-gold/80">
+            <p className="mt-2 font-ui text-[0.493rem] uppercase tracking-[0.36em] text-gold/80">
               Control Room
             </p>
           </Link>
@@ -27,7 +27,7 @@ export default async function LoginPage() {
 
         <div className="rounded-2xl border border-white/10 bg-[#141414] p-8 sm:p-10">
           <h1 className="font-display text-xl text-white/90">Staff sign in</h1>
-          <p className="mt-2 font-ui text-[0.82rem] text-white/45">
+          <p className="mt-2 font-ui text-[0.697rem] text-white/45">
             Use the email and password issued to you by the venue owner.
           </p>
           <div className="mt-8">
@@ -37,7 +37,7 @@ export default async function LoginPage() {
 
         <Link
           href="/"
-          className="mt-8 block text-center font-ui text-[0.78rem] text-white/40 hover:text-white/70"
+          className="mt-8 block text-center font-ui text-[0.663rem] text-white/40 hover:text-white/70"
         >
           ← Back to the site
         </Link>
