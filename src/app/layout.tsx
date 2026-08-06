@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "@/lib/site-url";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -21,7 +22,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://whiskeymistress.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

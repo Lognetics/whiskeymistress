@@ -1,7 +1,7 @@
 import { dayName } from "@/lib/format";
 import type { OpeningHour, SiteSettings, VenueEvent } from "@/lib/types";
+import { siteUrl } from "@/lib/site-url";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://whiskeymistress.com";
 
 export function StructuredData({
   settings,
