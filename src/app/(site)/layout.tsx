@@ -1,9 +1,7 @@
 import { FloatingActions } from "@/components/site/FloatingActions";
 import { Footer } from "@/components/site/Footer";
 import { Navbar } from "@/components/site/Navbar";
-import { PreviewBanner } from "@/components/site/PreviewBanner";
 import { StructuredData } from "@/components/site/StructuredData";
-import { isSupabaseConfigured } from "@/lib/supabase/config";
 import {
   getAnnouncement,
   getOpeningHours,
@@ -30,8 +28,6 @@ export default async function SiteLayout({
   return (
     <>
       <StructuredData settings={settings} hours={hours} events={events} />
-
-      {!isSupabaseConfigured ? <PreviewBanner /> : null}
 
       <Navbar
         brandName={settings.brand_name}
