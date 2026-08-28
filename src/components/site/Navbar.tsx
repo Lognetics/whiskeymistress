@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 import { Menu, Phone, X } from "lucide-react";
@@ -7,13 +8,12 @@ import { useEffect, useState } from "react";
 import type { Announcement } from "@/lib/types";
 
 const LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#dining", label: "Dining" },
-  { href: "#beverages", label: "Beverages" },
-  { href: "#experiences", label: "VIP Experience" },
+  { href: "#vibe", label: "The Vibe" },
+  { href: "#menu", label: "Liquid Assets" },
+  { href: "#live-acts", label: "Live Acts" },
   { href: "#events", label: "Events" },
   { href: "#gallery", label: "Gallery" },
-  { href: "#private-events", label: "Private Events" },
+  { href: "#reservations", label: "Claims" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -102,12 +102,14 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
             className="group flex flex-col leading-none"
             aria-label={`${brandName} home`}
           >
-            <span className="font-display text-[0.935rem] tracking-[0.16em] text-warm transition-colors group-hover:text-gold lg:text-[1.0625rem]">
-              {brandName.toUpperCase()}
-            </span>
-            <span className="mt-1 font-ui text-[0.4675rem] uppercase tracking-[0.42em] text-gold/80">
-              Abuja
-            </span>
+            <Image
+              src="/images/logo-wordmark.png"
+              alt={brandName}
+              width={1063}
+              height={541}
+              priority
+              className="h-9 w-auto lg:h-10"
+            />
           </Link>
 
           <ul className="hidden items-center gap-1 xl:flex">
@@ -148,7 +150,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
               href="#reservations"
               className="hidden rounded-full bg-[linear-gradient(100deg,#a9862a,#d4af37,#a9862a)] bg-[length:200%_auto] px-6 py-2.5 font-ui text-[0.629rem] font-medium uppercase tracking-[0.16em] text-ink transition-all duration-500 hover:bg-[position:right_center] sm:block"
             >
-              Reserve
+              Get Access
             </Link>
 
             <button
@@ -205,7 +207,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
                 onClick={() => setOpen(false)}
                 className="rounded-full bg-gold px-8 py-4 text-center font-ui text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink"
               >
-                Reserve a Table
+                Get Access
               </Link>
               <a
                 href={`tel:${phone.replace(/\s/g, "")}`}

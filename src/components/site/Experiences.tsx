@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Users } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import type { Experience } from "@/lib/types";
 
@@ -10,7 +10,7 @@ export function Experiences({ experiences }: { experiences: Experience[] }) {
       {experiences.map((experience, i) => (
         <Reveal key={experience.id} as="li" delay={Math.min(i * 0.07, 0.35)}>
           <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/8 bg-charcoal/60">
-            <div className="relative aspect-4/3 overflow-hidden">
+            <div className="relative aspect-4/5 overflow-hidden">
               {experience.image_url ? (
                 <Image
                   src={experience.image_url}
@@ -26,8 +26,7 @@ export function Experiences({ experiences }: { experiences: Experience[] }) {
                 aria-hidden
               />
               {experience.capacity ? (
-                <span className="glass absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-ui text-[0.527rem] uppercase tracking-[0.14em] text-warm/85">
-                  <Users className="size-3 text-gold" aria-hidden />
+                <span className="glass absolute left-4 top-4 rounded-full px-3.5 py-1.5 font-ui text-[0.527rem] uppercase tracking-[0.2em] text-champagne">
                   {experience.capacity}
                 </span>
               ) : null}
@@ -48,7 +47,7 @@ export function Experiences({ experiences }: { experiences: Experience[] }) {
               ) : null}
 
               <Link
-                href="#private-events"
+                href="#reservations"
                 className="mt-6 inline-flex items-center gap-2 self-start font-ui text-[0.629rem] uppercase tracking-[0.2em] text-champagne transition-colors hover:text-gold"
               >
                 {experience.cta_label}

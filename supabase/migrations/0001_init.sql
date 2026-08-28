@@ -10,10 +10,6 @@ create extension if not exists "pgcrypto";
 -- ------------------------------------------------------------------- enums
 
 do $$ begin
-  create type menu_kind as enum ('food', 'beverage');
-exception when duplicate_object then null; end $$;
-
-do $$ begin
   create type availability_status as enum ('available', 'limited', 'sold_out', 'seasonal');
 exception when duplicate_object then null; end $$;
 
@@ -75,16 +71,17 @@ create table if not exists site_settings (
   constraint site_settings_singleton check (id = 'default')
 );
 
+-- One ordered menu. `eyebrow` is the small-caps label printed above the
+-- section title, e.g. TABLE SERVICE above "Bottle Service".
 create table if not exists menu_categories (
   id uuid primary key default gen_random_uuid(),
-  kind menu_kind not null,
+  eyebrow text not null default '',
   name text not null,
-  slug text not null,
+  slug text not null unique,
   description text,
   sort_order int not null default 0,
   is_published boolean not null default true,
-  created_at timestamptz not null default now(),
-  unique (kind, slug)
+  created_at timestamptz not null default now()
 );
 
 create table if not exists menu_items (
@@ -98,6 +95,8 @@ create table if not exists menu_items (
   availability availability_status not null default 'available',
   is_signature boolean not null default false,
   dietary_tags text[] not null default '{}',
+  -- Optional sub-heading inside a category: WHISKEY / COGNAC / BUBBLY / SPIRITS.
+  group_label text,
   sort_order int not null default 0,
   is_published boolean not null default true,
   created_at timestamptz not null default now()

@@ -6,11 +6,10 @@ import { isSupabaseConfigured } from "./supabase/config";
 import { todayInLagos } from "./format";
 import {
   seedAnnouncement,
-  seedBeverageSections,
   seedEvents,
   seedExperiences,
-  seedFoodSections,
   seedGallery,
+  seedMenuSections,
   seedHours,
   seedSettings,
   seedTestimonials,
@@ -21,7 +20,6 @@ import type {
   GalleryImage,
   MenuCategory,
   MenuItem,
-  MenuKind,
   MenuSection,
   OpeningHour,
   PrivateEventInquiry,
@@ -38,29 +36,36 @@ import type {
  * renders identically in both modes.
  */
 
-function joinSections(
-  categories: MenuCategory[],
-  items: MenuItem[],
-): MenuSection[] {
-  return categories.map((category) => ({
-    ...category,
-    items: items
-      .filter((item) => item.category_id === category.id)
-      .sort((a, b) => a.sort_order - b.sort_order),
-  }));
+/** Groups a category's items by `group_label`, preserving sort order. */
+function groupItems(items: MenuItem[]) {
+  const out: { label: string | null; items: MenuItem[] }[] = [];
+  for (const entry of items) {
+    const bucket = out.find((g) => g.label === entry.group_label);
+    if (bucket) bucket.items.push(entry);
+    else out.push({ label: entry.group_label, items: [entry] });
+  }
+  return out;
 }
 
-async function fetchMenu(kind: MenuKind): Promise<MenuSection[]> {
+function assemble(categories: MenuCategory[], items: MenuItem[]): MenuSection[] {
+  return categories
+    .map((category) => {
+      const own = items
+        .filter((entry) => entry.category_id === category.id)
+        .sort((a, b) => a.sort_order - b.sort_order);
+      return { ...category, items: own, groups: groupItems(own) };
+    })
+    .filter((section) => section.items.length > 0);
+}
+
+export const getMenuSections = cache(async (): Promise<MenuSection[]> => {
   const supabase = await createServerSupabase();
-  if (!supabase) {
-    return kind === "food" ? seedFoodSections : seedBeverageSections;
-  }
+  if (!supabase) return seedMenuSections;
 
   const [{ data: categories }, { data: items }] = await Promise.all([
     supabase
       .from("menu_categories")
       .select("*")
-      .eq("kind", kind)
       .eq("is_published", true)
       .order("sort_order"),
     supabase
@@ -70,15 +75,10 @@ async function fetchMenu(kind: MenuKind): Promise<MenuSection[]> {
       .order("sort_order"),
   ]);
 
-  if (!categories?.length) {
-    return kind === "food" ? seedFoodSections : seedBeverageSections;
-  }
+  if (!categories?.length) return seedMenuSections;
 
-  return joinSections(
-    categories as MenuCategory[],
-    (items ?? []) as MenuItem[],
-  ).filter((section) => section.items.length > 0);
-}
+  return assemble(categories as MenuCategory[], (items ?? []) as MenuItem[]);
+});
 
 export const getSettings = cache(async (): Promise<SiteSettings> => {
   const supabase = await createServerSupabase();
@@ -110,9 +110,6 @@ export const getAnnouncement = cache(async (): Promise<Announcement | null> => {
 
   return (data as Announcement | null) ?? null;
 });
-
-export const getFoodSections = cache(() => fetchMenu("food"));
-export const getBeverageSections = cache(() => fetchMenu("beverage"));
 
 export const getExperiences = cache(async (): Promise<Experience[]> => {
   const supabase = await createServerSupabase();
@@ -200,8 +197,7 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
   const [
     settings,
     announcement,
-    foodSections,
-    beverageSections,
+    menuSections,
     experiences,
     events,
     gallery,
@@ -210,8 +206,7 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
   ] = await Promise.all([
     getSettings(),
     getAnnouncement(),
-    getFoodSections(),
-    getBeverageSections(),
+    getMenuSections(),
     getExperiences(),
     getUpcomingEvents(),
     getGallery(),
@@ -222,8 +217,7 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
   return {
     settings,
     announcement,
-    foodSections,
-    beverageSections,
+    menuSections,
     experiences,
     events,
     gallery,
@@ -235,42 +229,29 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
 
 /* ------------------------------------------------------------ admin reads */
 
-export async function getAllMenuCategories(kind?: MenuKind) {
+export async function getAllMenuCategories() {
   const supabase = await createServerSupabase();
   if (!supabase) {
-    const all = [...seedFoodSections, ...seedBeverageSections].map(
-      ({ items: _items, ...category }) => category,
+    return seedMenuSections.map(
+      ({ items: _items, groups: _groups, ...category }) => category,
     );
-    return kind ? all.filter((c) => c.kind === kind) : all;
   }
 
-  let query = supabase.from("menu_categories").select("*").order("sort_order");
-  if (kind) query = query.eq("kind", kind);
+  const { data } = await supabase
+    .from("menu_categories")
+    .select("*")
+    .order("sort_order");
 
-  const { data } = await query;
   return (data ?? []) as MenuCategory[];
 }
 
-export async function getAllMenuItems(kind?: MenuKind) {
+export async function getAllMenuItems() {
   const supabase = await createServerSupabase();
-  if (!supabase) {
-    const sections =
-      kind === "food"
-        ? seedFoodSections
-        : kind === "beverage"
-          ? seedBeverageSections
-          : [...seedFoodSections, ...seedBeverageSections];
-    return sections.flatMap((section) => section.items);
-  }
-
-  const categories = await getAllMenuCategories(kind);
-  const ids = categories.map((c) => c.id);
-  if (!ids.length) return [];
+  if (!supabase) return seedMenuSections.flatMap((section) => section.items);
 
   const { data } = await supabase
     .from("menu_items")
     .select("*")
-    .in("category_id", ids)
     .order("sort_order");
 
   return (data ?? []) as MenuItem[];

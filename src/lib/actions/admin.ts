@@ -18,11 +18,10 @@ import {
   settingsSchema,
 } from "@/lib/validation";
 import {
-  seedBeverageSections,
   seedExperiences,
   seedEvents,
-  seedFoodSections,
   seedGallery,
+  seedMenuSections,
   seedHours,
   seedSettings,
   seedTestimonials,
@@ -95,6 +94,7 @@ export async function saveMenuItem(
         .split(",")
         .map((tag) => tag.trim())
         .filter(Boolean),
+      group_label: empty(data.group_label),
       sort_order: data.sort_order,
       is_published: data.is_published,
     };
@@ -113,7 +113,7 @@ export async function saveCategory(
 ): Promise<AdminState> {
   return guarded(categorySchema, formData, async (data, supabase) => {
     const row = {
-      kind: data.kind,
+      eyebrow: data.eyebrow || "",
       name: data.name,
       slug: data.slug,
       description: empty(data.description),
@@ -451,8 +451,8 @@ export async function importSeedCatalogue(
   }
 
   // Menu categories carry generated ids, so items are inserted per category.
-  for (const section of [...seedFoodSections, ...seedBeverageSections]) {
-    const { items, id: _id, ...category } = section;
+  for (const section of seedMenuSections) {
+    const { items, id: _id, groups: _groups, ...category } = section;
 
     const { data: inserted, error: categoryError } = await supabase
       .from("menu_categories")
@@ -470,7 +470,7 @@ export async function importSeedCatalogue(
     }
 
     const { error: itemError } = await supabase.from("menu_items").insert(
-      items.map(({ id: _itemId, category_id: _catId, ...item }) => ({
+      items.map(({ id: _itemId, category_id: _catId, ...item }: (typeof items)[number]) => ({
         ...item,
         category_id: inserted.id,
       })),

@@ -1,6 +1,6 @@
 import { PageHeading } from "@/components/admin/Shell";
 import { ResourceManager } from "@/components/admin/ResourceManager";
-import { KIND_OPTIONS, type FieldDef } from "@/components/admin/fields";
+import { EYEBROW_OPTIONS, type FieldDef } from "@/components/admin/fields";
 import { saveCategory } from "@/lib/actions/admin";
 import { getAllMenuCategories } from "@/lib/content";
 import { getAdminAccess } from "@/lib/auth";
@@ -9,12 +9,13 @@ export const dynamic = "force-dynamic";
 
 const fields: FieldDef[] = [
   {
-    name: "kind",
-    label: "Menu",
+    name: "eyebrow",
+    label: "Eyebrow",
     type: "select",
     required: true,
-    options: KIND_OPTIONS,
-    defaultValue: "food",
+    options: EYEBROW_OPTIONS,
+    defaultValue: "Table Service",
+    hint: "Small-caps label printed above the section title.",
   },
   { name: "name", label: "Name", type: "text", required: true },
   {
@@ -22,7 +23,7 @@ const fields: FieldDef[] = [
     label: "Slug",
     type: "text",
     required: true,
-    placeholder: "nigerian-cuisine",
+    placeholder: "bottle-service",
     hint: "Lowercase letters, numbers and hyphens.",
   },
   { name: "sort_order", label: "Sort order", type: "number", min: 0, defaultValue: 0 },
@@ -46,7 +47,7 @@ export default async function CategoriesPage() {
     <div>
       <PageHeading
         title="Menu Categories"
-        description="The sections guests tab through on the Dining and Beverage menus. Deleting a category removes its items too."
+        description="The sections of the menu, in the order guests read them. Deleting a category removes its items too."
       />
 
       <ResourceManager
@@ -60,7 +61,7 @@ export default async function CategoriesPage() {
         listConfig={{
           primary: "name",
           secondary: "description",
-          badges: ["kind", "is_published"],
+          badges: ["eyebrow", "is_published"],
         }}
       />
     </div>

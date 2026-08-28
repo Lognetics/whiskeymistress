@@ -6,10 +6,10 @@ import { siteUrl } from "@/lib/site-url";
 export default function sitemap(): MetadataRoute.Sitemap {
   const sections = [
     "",
-    "#about",
-    "#dining",
-    "#beverages",
-    "#experiences",
+    "#vibe",
+    "#experience",
+    "#menu",
+    "#live-acts",
     "#events",
     "#gallery",
     "#reservations",

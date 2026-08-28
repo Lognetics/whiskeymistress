@@ -15,7 +15,6 @@ import {
   Settings,
   Sparkles,
   Tags,
-  Wine,
   X,
 } from "lucide-react";
 import { useState } from "react";
@@ -25,8 +24,7 @@ const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
   { href: "/admin/reservations", label: "Reservations", icon: CalendarDays },
   { href: "/admin/inquiries", label: "Private Events", icon: Mail },
-  { href: "/admin/menu", label: "Food Menu", icon: ChefHat },
-  { href: "/admin/beverages", label: "Beverage Menu", icon: Wine },
+  { href: "/admin/menu", label: "Menu", icon: ChefHat },
   { href: "/admin/categories", label: "Categories", icon: Tags },
   { href: "/admin/experiences", label: "Experiences", icon: Sparkles },
   { href: "/admin/events", label: "Events", icon: CalendarDays },

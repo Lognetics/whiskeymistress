@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Music2, Twitter } from "lucide-react";
 import { NewsletterForm } from "./NewsletterForm";
@@ -5,14 +6,14 @@ import { ButtonLink } from "@/components/ui/Button";
 import type { SiteSettings } from "@/lib/types";
 
 const QUICK_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#dining", label: "Dining Menu" },
-  { href: "#beverages", label: "Beverage Menu" },
-  { href: "#experiences", label: "VIP Experience" },
+  { href: "#vibe", label: "The Vibe" },
+  { href: "#experience", label: "The Experience" },
+  { href: "#menu", label: "Our Menu" },
+  { href: "#live-acts", label: "Live Acts" },
   { href: "#events", label: "Events" },
   { href: "#gallery", label: "Gallery" },
-  { href: "#reservations", label: "Reservations" },
-  { href: "#private-events", label: "Private Events" },
+  { href: "#reservations", label: "Claim a Table" },
+  { href: "#contact", label: "Contact" },
 ] as const;
 
 export function Footer({ settings }: { settings: SiteSettings }) {
@@ -30,20 +31,24 @@ export function Footer({ settings }: { settings: SiteSettings }) {
       <div className="container-luxe py-20">
         <div className="glass-gold mb-16 flex flex-col items-center gap-6 rounded-[1.75rem] px-8 py-12 text-center">
           <h2 className="max-w-2xl font-display text-[clamp(1.36rem,2.89vw,2.125rem)] leading-tight text-warm">
-            The table is set. All that&apos;s left is you.
+Tonight deserves a better story.
           </h2>
           <ButtonLink href="#reservations" size="lg">
-            Reserve a Table
+            Get Access
           </ButtonLink>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="#top" className="inline-flex flex-col leading-none">
-              <span className="font-display text-2xl tracking-[0.16em] text-warm">
-                {settings.brand_name.toUpperCase()}
-              </span>
-              <span className="mt-2 font-ui text-[0.493rem] uppercase tracking-[0.42em] text-gold/80">
+              <Image
+                src="/images/logo-wordmark.png"
+                alt={settings.brand_name}
+                width={1063}
+                height={541}
+                className="h-12 w-auto"
+              />
+              <span className="mt-3 font-ui text-[0.493rem] uppercase tracking-[0.42em] text-gold/80">
                 {settings.city} · {settings.country}
               </span>
             </Link>

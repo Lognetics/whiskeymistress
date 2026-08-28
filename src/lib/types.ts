@@ -4,13 +4,12 @@
  * `supabase/migrations/0001_init.sql` one-for-one.
  */
 
-export type MenuKind = "food" | "beverage";
-
 export type Availability = "available" | "limited" | "sold_out" | "seasonal";
 
 export interface MenuCategory {
   id: string;
-  kind: MenuKind;
+  /** Small-caps label above the title, e.g. "TABLE SERVICE". */
+  eyebrow: string;
   name: string;
   slug: string;
   description: string | null;
@@ -30,13 +29,25 @@ export interface MenuItem {
   availability: Availability;
   is_signature: boolean;
   dietary_tags: string[];
+  /**
+   * Optional sub-heading inside a category — the bottle list is grouped into
+   * WHISKEY / COGNAC / BUBBLY / SPIRITS under one "Bottle Service" category.
+   */
+  group_label: string | null;
   sort_order: number;
   is_published: boolean;
 }
 
-/** A category with its items already attached — what the menu sections render. */
+/** Items sharing a `group_label` within a category. */
+export interface MenuGroup {
+  label: string | null;
+  items: MenuItem[];
+}
+
+/** A category with its items grouped — what the price list renders. */
 export interface MenuSection extends MenuCategory {
   items: MenuItem[];
+  groups: MenuGroup[];
 }
 
 export interface Experience {
@@ -182,8 +193,7 @@ export interface NewsletterSubscriber {
 export interface SiteContent {
   settings: SiteSettings;
   announcement: Announcement | null;
-  foodSections: MenuSection[];
-  beverageSections: MenuSection[];
+  menuSections: MenuSection[];
   experiences: Experience[];
   events: VenueEvent[];
   gallery: GalleryImage[];

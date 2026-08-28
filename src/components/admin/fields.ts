@@ -44,9 +44,12 @@ export const AVAILABILITY_OPTIONS = [
   { value: "seasonal", label: "Seasonal" },
 ];
 
-export const KIND_OPTIONS = [
-  { value: "food", label: "Food" },
-  { value: "beverage", label: "Beverage" },
+export const EYEBROW_OPTIONS = [
+  { value: "Table Service", label: "Table Service" },
+  { value: "From The Fire", label: "From The Fire" },
+  { value: "House Pours", label: "House Pours" },
+  { value: "Chilled", label: "Chilled" },
+  { value: "Smoke", label: "Smoke" },
 ];
 
 export const RESERVATION_STATUS_OPTIONS = [

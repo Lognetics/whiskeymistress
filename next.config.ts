@@ -12,20 +12,11 @@ const supabaseHost = (() => {
 
 const nextConfig: NextConfig = {
   images: {
-    // Unsplash images are served straight from their own CDN; local files and
-    // Supabase uploads still fall through to the built-in optimizer.
-    // See src/lib/imageLoader.ts.
-    loader: "custom",
-    loaderFile: "./src/lib/imageLoader.ts",
     formats: ["image/avif", "image/webp"],
-    // Still enforced for anything the loader routes to /_next/image.
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "plus.unsplash.com" },
-      ...(supabaseHost
-        ? ([{ protocol: "https", hostname: supabaseHost }] as const)
-        : []),
-    ],
+    // Venue photography ships from /public; Supabase Storage covers CMS uploads.
+    remotePatterns: supabaseHost
+      ? [{ protocol: "https", hostname: supabaseHost }]
+      : [],
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "motion"],

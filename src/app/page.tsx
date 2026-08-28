@@ -6,15 +6,16 @@ import { FloatingActions } from "@/components/site/FloatingActions";
 import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import { Hero } from "@/components/site/Hero";
-import { MenuBoard } from "@/components/site/MenuBoard";
 import { Navbar } from "@/components/site/Navbar";
+import { Metrics, Pillars } from "@/components/site/Pillars";
 import { PreviewBanner } from "@/components/site/PreviewBanner";
+import { PriceList } from "@/components/site/PriceList";
 import { PrivateEventForm } from "@/components/site/PrivateEventForm";
 import { ReservationForm } from "@/components/site/ReservationForm";
 import { StructuredData } from "@/components/site/StructuredData";
-import { Testimonials } from "@/components/site/Testimonials";
 import { Section } from "@/components/ui/Section";
 import { getSiteContent } from "@/lib/content";
+import { LIVE_ACT_PILLARS, NIGHTLIFE_METRICS, VIBE_PILLARS } from "@/lib/seed";
 
 export const revalidate = 300;
 
@@ -22,15 +23,19 @@ export default async function HomePage() {
   const {
     settings,
     announcement,
-    foodSections,
-    beverageSections,
+    menuSections,
     experiences,
     events,
     gallery,
-    testimonials,
     hours,
     isPreview,
   } = await getSiteContent();
+
+  const today = new Date().toISOString().slice(0, 10);
+  const upcoming = events.filter((event) => event.event_date >= today);
+  const recent = events.filter((event) => event.event_date < today);
+  // Seed dates drift into the past; never render an empty calendar.
+  const onTheCalendar = upcoming.length ? upcoming : events;
 
   return (
     <>
@@ -55,58 +60,80 @@ export default async function HomePage() {
         <About settings={settings} />
 
         <Section
-          id="dining"
-          eyebrow="The Kitchen"
-          title="Dining Menu"
-          intro="Nigerian cuisine cooked with reverence alongside a modern grill, seafood and pasta programme. Every plate is finished by hand at the pass."
-          className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
+          id="vibe"
+          eyebrow="The Vibe"
+          title="Every Night Is An Occasion"
+          intro="Three things you can count on, whichever night you walk in."
         >
-          <MenuBoard sections={foodSections} variant="food" />
+          <Pillars pillars={VIBE_PILLARS} />
         </Section>
 
         <Section
-          id="beverages"
-          eyebrow="The Bar"
-          title="Beverage Menu"
-          intro="Signature cocktails, zero-proof creations, pressed juices and a considered coffee and tea list — built at the bar, garnished to order."
-        >
-          <MenuBoard sections={beverageSections} variant="beverage" />
-        </Section>
-
-        <Section
-          id="experiences"
-          eyebrow="Featured Experiences"
-          title="The VIP Experience"
-          intro="Six ways to take the room. Each one comes with a dedicated host and a service team that knows the night before it happens."
+          id="experience"
+          eyebrow="What We Offer"
+          title="The Experience"
           className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
         >
           <Experiences experiences={experiences} />
         </Section>
 
+        <div className="py-20 lg:py-24">
+          <Metrics metrics={NIGHTLIFE_METRICS} />
+        </div>
+
+        <Section
+          id="menu"
+          eyebrow="Liquid Assets"
+          title="Our Menu"
+          intro="Grills off the fire, cocktails built to order and a bottle list that runs from Glenlivet to Dom Perignon. All prices in naira."
+          className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
+        >
+          <PriceList sections={menuSections} />
+        </Section>
+
+        <Section
+          id="live-acts"
+          eyebrow="Live Acts"
+          title="When The Lights Drop"
+          intro="Every night is staged. Here is what it looks like when the room fills."
+        >
+          <Pillars pillars={LIVE_ACT_PILLARS} />
+        </Section>
+
         <Section
           id="events"
-          eyebrow="What's On"
+          eyebrow="On The Calendar"
           title="Upcoming Events"
-          intro="Live bands, tasting menus, guest DJs and seasonal galas. Tables go quickly — reserve ahead."
+          intro="Doors open at 8PM. Tables go fast."
+          className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
         >
-          <Events events={events} />
+          <Events events={onTheCalendar} />
+
+          {recent.length && upcoming.length ? (
+            <div className="mt-20">
+              <p className="mb-8 font-ui text-[0.612rem] uppercase tracking-[0.34em] text-gold/80">
+                Recent Nights
+              </p>
+              <Events events={recent} />
+            </div>
+          ) : null}
         </Section>
 
         <Section
           id="gallery"
-          eyebrow="The Room"
-          title="Gallery"
-          intro="A look inside the dining room, the lounge, the kitchen's work and the nights that follow."
-          className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
+          eyebrow="Glimpses"
+          title="See You Soon"
+          intro="A look at the room, the acts and the nights that follow."
         >
           <Gallery images={gallery} />
         </Section>
 
         <Section
           id="reservations"
-          eyebrow="Reservations"
-          title="Reserve Your Table"
-          intro="Tell us when you're coming and what you're celebrating. Our reservations team confirms every request personally."
+          eyebrow="Get Access"
+          title="Claim Your Table"
+          intro="Tell us when you are coming and how the night should feel. We confirm every request personally."
+          className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
         >
           <div className="mx-auto max-w-4xl">
             <ReservationForm
@@ -119,24 +146,19 @@ export default async function HomePage() {
 
         <Section
           id="private-events"
-          eyebrow="Private Events"
-          title="Host It Here"
-          intro="Birthdays, corporate dinners, product launches, engagements and networking evenings — from an intimate room of twelve to the full venue."
-          className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
+          eyebrow="Send Us A Message"
+          title="Tell Us What You Need"
+          intro="Private events, bottle takeovers, enquiries or feedback. We reply by email or phone."
         >
           <div className="mx-auto max-w-4xl">
             <PrivateEventForm email={settings.email} />
           </div>
         </Section>
 
-        <Section id="testimonials" eyebrow="Guest Book" title="What Our Guests Say">
-          <Testimonials testimonials={testimonials} />
-        </Section>
-
         <Section
           id="contact"
-          eyebrow="Find Us"
-          title="Visit Whiskey Mistress"
+          eyebrow="Visit Us"
+          title="Find Whiskey Mistress"
           intro={`${settings.address_line}, ${settings.city}.`}
           className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
         >

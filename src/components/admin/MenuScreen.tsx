@@ -4,22 +4,19 @@ import { AVAILABILITY_OPTIONS, type FieldDef } from "@/components/admin/fields";
 import { saveMenuItem } from "@/lib/actions/admin";
 import { getAllMenuCategories, getAllMenuItems } from "@/lib/content";
 import { getAdminAccess } from "@/lib/auth";
-import type { MenuKind } from "@/lib/types";
 
-/** Shared by the food and beverage screens — only the `kind` differs. */
+/** The single menu screen — every category and item, in menu order. */
 export async function MenuScreen({
-  kind,
   title,
   description,
 }: {
-  kind: MenuKind;
   title: string;
   description: string;
 }) {
   const [access, categories, items] = await Promise.all([
     getAdminAccess(),
-    getAllMenuCategories(kind),
-    getAllMenuItems(kind),
+    getAllMenuCategories(),
+    getAllMenuItems(),
   ]);
 
   const categoryOptions = categories.map((category) => ({
@@ -37,6 +34,13 @@ export async function MenuScreen({
       span: 2,
     },
     { name: "name", label: "Name", type: "text", required: true, span: 2 },
+    {
+      name: "group_label",
+      label: "Group",
+      type: "text",
+      placeholder: "Whiskey",
+      hint: "Optional sub-heading, e.g. Whiskey / Cognac / Bubbly.",
+    },
     {
       name: "description",
       label: "Description",
@@ -105,18 +109,18 @@ export async function MenuScreen({
 
       {categoryOptions.length === 0 ? (
         <p className="mb-6 rounded-xl border border-amber-400/25 bg-amber-500/8 px-5 py-4 font-ui text-[0.697rem] text-amber-200">
-          Create a {kind} category first — items must belong to one.
+          Create a category first — every item must belong to one.
         </p>
       ) : null}
 
       <ResourceManager
-        title={kind === "food" ? "dish" : "drink"}
+        title="item"
         table="menu_items"
         records={records}
         fields={fields}
         saveAction={saveMenuItem}
         readOnly={access.mode !== "authorized"}
-        addLabel={kind === "food" ? "Add dish" : "Add drink"}
+        addLabel="Add item"
         emptyLabel="No items yet. Add your first one to see it on the site."
         listConfig={{
           primary: "name",

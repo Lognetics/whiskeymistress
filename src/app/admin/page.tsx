@@ -13,6 +13,7 @@ import { SeedImporter } from "@/components/admin/SeedImporter";
 import {
   getAllEvents,
   getAllGallery,
+  getAllMenuCategories,
   getAllMenuItems,
   getInquiries,
   getReservations,
@@ -27,10 +28,10 @@ export default async function AdminOverviewPage() {
   const access = await getAdminAccess();
   const preview = access.mode === "preview";
 
-  const [food, beverages, events, gallery, reservations, inquiries, subscribers] =
+  const [menuItems, categories, events, gallery, reservations, inquiries, subscribers] =
     await Promise.all([
-      getAllMenuItems("food"),
-      getAllMenuItems("beverage"),
+      getAllMenuItems(),
+      getAllMenuCategories(),
       getAllEvents(),
       getAllGallery(),
       getReservations(),
@@ -61,8 +62,8 @@ export default async function AdminOverviewPage() {
   ];
 
   const catalogue = [
-    { label: "Food items", value: food.length, href: "/admin/menu", icon: ChefHat },
-    { label: "Beverages", value: beverages.length, href: "/admin/beverages", icon: Wine },
+    { label: "Menu items", value: menuItems.length, href: "/admin/menu", icon: ChefHat },
+    { label: "Categories", value: categories.length, href: "/admin/categories", icon: Wine },
     { label: "Events", value: events.length, href: "/admin/events", icon: CalendarDays },
     { label: "Gallery images", value: gallery.length, href: "/admin/gallery", icon: Images },
   ];

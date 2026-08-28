@@ -19,6 +19,15 @@ const phone = z
     "Enter a valid phone number",
   );
 
+/** Absolute URL or a site-relative path such as /images/hero.jpg. */
+const imageRef = z
+  .string()
+  .trim()
+  .refine(
+    (v) => v === "" || v.startsWith("/") || /^https?:\/\//.test(v),
+    "Enter an image URL or a path beginning with /",
+  );
+
 const isoDate = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/, "Choose a valid date");
@@ -72,17 +81,18 @@ export const menuItemSchema = z.object({
   /** Entered in naira in the dashboard; converted to kobo on save. */
   price_major: z.coerce.number().min(0, "Price cannot be negative").max(100_000_000),
   currency: z.string().trim().length(3).default("NGN"),
-  image_url: z.string().trim().url("Enter a valid image URL").optional().or(z.literal("")),
+  image_url: imageRef.optional().or(z.literal("")),
   availability: z.enum(["available", "limited", "sold_out", "seasonal"]),
   is_signature: z.coerce.boolean().default(false),
   dietary_tags: z.string().trim().max(200).optional().or(z.literal("")),
+  group_label: z.string().trim().max(60).optional().or(z.literal("")),
   sort_order: z.coerce.number().int().min(0).max(9999).default(0),
   is_published: z.coerce.boolean().default(true),
 });
 
 export const categorySchema = z.object({
   id: z.string().uuid().optional().or(z.literal("")),
-  kind: z.enum(["food", "beverage"]),
+  eyebrow: z.string().trim().max(60).optional().or(z.literal("")),
   name: trimmed(1, 80, "Name"),
   slug: z
     .string()
@@ -105,7 +115,7 @@ export const eventSchema = z.object({
     .max(140)
     .regex(/^[a-z0-9-]+$/, "Use lowercase letters, numbers and hyphens only"),
   description: z.string().trim().max(1200).optional().or(z.literal("")),
-  banner_url: z.string().trim().url("Enter a valid image URL").optional().or(z.literal("")),
+  banner_url: imageRef.optional().or(z.literal("")),
   event_date: isoDate,
   start_time: z.string().regex(/^\d{2}:\d{2}$/, "Choose a start time"),
   end_time: z.string().regex(/^\d{2}:\d{2}$/).optional().or(z.literal("")),
@@ -116,7 +126,7 @@ export const eventSchema = z.object({
 
 export const galleryImageSchema = z.object({
   id: z.string().uuid().optional().or(z.literal("")),
-  image_url: z.string().trim().url("Enter a valid image URL"),
+  image_url: imageRef,
   alt: trimmed(1, 200, "Alt text"),
   category: trimmed(1, 60, "Category"),
   width: z.coerce.number().int().min(1).max(10000).default(1400),
@@ -139,7 +149,7 @@ export const experienceSchema = z.object({
   id: z.string().uuid().optional().or(z.literal("")),
   title: trimmed(1, 100, "Title"),
   description: trimmed(1, 800, "Description"),
-  image_url: z.string().trim().url("Enter a valid image URL").optional().or(z.literal("")),
+  image_url: imageRef.optional().or(z.literal("")),
   capacity: z.string().trim().max(60).optional().or(z.literal("")),
   price_note: z.string().trim().max(120).optional().or(z.literal("")),
   cta_label: z.string().trim().max(40).default("Book Now"),
@@ -154,7 +164,7 @@ export const settingsSchema = z.object({
   hero_subheadline: z.string().trim().max(400).optional().or(z.literal("")),
   about_heading: trimmed(1, 160, "About heading"),
   about_body: z.string().trim().max(4000).optional().or(z.literal("")),
-  about_image_url: z.string().trim().url("Enter a valid image URL").optional().or(z.literal("")),
+  about_image_url: imageRef.optional().or(z.literal("")),
   address_line: trimmed(1, 200, "Address"),
   city: trimmed(1, 80, "City"),
   country: trimmed(1, 80, "Country"),

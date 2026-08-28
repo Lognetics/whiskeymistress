@@ -2,12 +2,11 @@ import { MenuScreen } from "@/components/admin/MenuScreen";
 
 export const dynamic = "force-dynamic";
 
-export default async function FoodMenuPage() {
+export default async function MenuPage() {
   return (
     <MenuScreen
-      kind="food"
-      title="Food Menu"
-      description="Dishes, prices and availability. Anything published here appears in the Dining section of the site."
+      title="Menu"
+      description="Every item guests can order — bottle service, grills, cocktails, beverages and puffs. Prices and availability update the site immediately."
     />
   );
 }

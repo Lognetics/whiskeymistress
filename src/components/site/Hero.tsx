@@ -6,8 +6,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=80";
+const HERO_IMAGE = "/images/experience-drinks.jpg";
 
 interface HeroProps {
   headline: string;
@@ -81,17 +80,32 @@ export function Hero({ headline, subheadline, tagline, videoUrl }: HeroProps) {
         className="container-luxe relative flex flex-col items-center pt-20 text-center"
         style={reduce ? undefined : { y: contentY, opacity }}
       >
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Image
+            src="/images/logo-wordmark.png"
+            alt="Whiskey Mistress"
+            width={1063}
+            height={541}
+            priority
+            className="h-24 w-auto sm:h-32 lg:h-40"
+          />
+        </motion.div>
+
         <motion.p
-          className="font-ui text-[0.578rem] uppercase tracking-[0.5em] text-gold-gradient sm:text-[0.6375rem]"
+          className="mt-6 font-ui text-[0.578rem] uppercase tracking-[0.5em] text-gold-gradient sm:text-[0.6375rem]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           {tagline}
         </motion.p>
 
         <motion.h1
-          className="mt-8 max-w-5xl font-display text-[clamp(2.04rem,5.61vw,4.335rem)] leading-[1.03] tracking-[-0.02em] text-warm"
+          className="mt-7 max-w-5xl font-display text-[clamp(2.04rem,5.61vw,4.335rem)] leading-[1.03] tracking-[-0.02em] text-warm"
           initial={{ opacity: 0, y: 34 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -126,19 +140,19 @@ export function Hero({ headline, subheadline, tagline, videoUrl }: HeroProps) {
             href="#reservations"
             className="rounded-full bg-[linear-gradient(100deg,#a9862a_0%,#d4af37_35%,#f0e2c0_50%,#d4af37_65%,#a9862a_100%)] bg-[length:200%_auto] px-10 py-4 font-ui text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink shadow-[0_18px_50px_-18px_rgba(212,175,55,0.8)] transition-all duration-500 hover:bg-[position:right_center] hover:shadow-[0_26px_70px_-18px_rgba(212,175,55,0.95)]"
           >
-            Reserve a Table
+            Get Access
           </Link>
           <Link
-            href="#dining"
+            href="#menu"
             className="rounded-full border border-gold/40 px-10 py-4 font-ui text-[0.68rem] uppercase tracking-[0.2em] text-champagne backdrop-blur-sm transition-all duration-500 hover:border-gold hover:bg-gold/10"
           >
-            Explore the Menu
+            See the Menu
           </Link>
         </motion.div>
       </motion.div>
 
       <motion.a
-        href="#about"
+        href="#vibe"
         aria-label="Scroll to explore"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/70 transition-colors hover:text-gold"
         initial={{ opacity: 0 }}

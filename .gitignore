@@ -10,3 +10,6 @@ npm-debug.log*
 .vercel
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# Source screenshots used to build the catalogue (108MB, not needed to run)
+Whiskey screenshots/

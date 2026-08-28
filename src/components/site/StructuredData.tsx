@@ -14,14 +14,14 @@ export function StructuredData({
 }) {
   const restaurant = {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
+    "@type": "NightClub",
     "@id": `${siteUrl}#restaurant`,
     name: settings.brand_name,
     description: settings.hero_subheadline,
     url: siteUrl,
     telephone: settings.phone,
     email: settings.email,
-    servesCuisine: ["Nigerian", "Continental", "Seafood", "Grill"],
+    servesCuisine: ["Grill", "Cocktails"],
     priceRange: "₦₦₦",
     image: settings.about_image_url ? [settings.about_image_url] : undefined,
     address: {

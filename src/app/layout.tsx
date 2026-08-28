@@ -26,19 +26,20 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Whiskey Mistress — Luxury Dining, Lounge & Entertainment in Abuja",
+    default: "Whiskey Mistress — Abuja's Premium Nightlife Destination",
     template: "%s · Whiskey Mistress",
   },
   description:
-    "Abuja's premier luxury dining and entertainment destination. Fine dining, signature cocktails, VIP lounges, live entertainment and private events in Wuse II. Reserve your table.",
+    "Abuja's premium nightlife destination in Wuse 2 — a world-class whiskey list, bottle service, grills off the fire, resident DJs and live acts. Open Wednesday to Sunday, doors at 8PM.",
   keywords: [
-    "Abuja restaurant",
-    "luxury dining Abuja",
-    "Wuse II lounge",
-    "private dining Abuja",
-    "fine dining Nigeria",
+    "Abuja nightlife",
+    "Whiskey Mistress Abuja",
+    "Wuse 2 lounge",
+    "bottle service Abuja",
+    "whiskey bar Abuja",
     "cocktail bar Abuja",
-    "Whiskey Mistress",
+    "live acts Abuja",
+    "clubs in Abuja",
   ],
   applicationName: "Whiskey Mistress",
   authors: [{ name: "Whiskey Mistress" }],
@@ -48,22 +49,22 @@ export const metadata: Metadata = {
     locale: "en_NG",
     url: siteUrl,
     siteName: "Whiskey Mistress",
-    title: "Whiskey Mistress — Luxury Dining, Lounge & Entertainment in Abuja",
+    title: "Whiskey Mistress — Abuja's Premium Nightlife Destination",
     description:
-      "Exceptional cuisine, elegant hospitality and immersive entertainment in the heart of Abuja. Reserve a table or plan a private celebration.",
+      "Abuja, you are invited. Tonight deserves a better story — bottle service, grills, resident DJs and live acts in Wuse 2.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Whiskey Mistress — Luxury Dining & Entertainment, Abuja",
+    title: "Whiskey Mistress — Abuja Nightlife",
     description:
-      "Fine dining, signature cocktails, VIP lounges and live entertainment in Wuse II, Abuja.",
+      "Bottle service, grills, resident DJs and live acts in Wuse 2, Abuja. Doors at 8PM.",
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  category: "restaurant",
+  category: "nightlife",
 };
 
 export const viewport: Viewport = {
