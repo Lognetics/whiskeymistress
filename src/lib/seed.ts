@@ -41,7 +41,7 @@ export const seedSettings: SiteSettings = {
   email: "hello@whiskeymistressabuja.com",
   maps_query:
     "Nurnberger Platz, Ademola Adetokunbo Crescent, Wuse 2, Abuja, Nigeria",
-  instagram_url: "https://instagram.com/whiskeymistressabuja",
+  instagram_url: "https://instagram.com/whiskeymistress_abj",
   facebook_url: null,
   x_url: null,
   tiktok_url: null,
@@ -383,67 +383,48 @@ export const seedEvents: VenueEvent[] = [
 
 /* ----------------------------------------------------------------- gallery */
 
+/** Compact gallery-row builder. */
+function img(
+  id: string,
+  image_url: string,
+  alt: string,
+  category: string,
+  width: number,
+  height: number,
+): GalleryImage {
+  return {
+    id,
+    image_url,
+    alt,
+    category,
+    width,
+    height,
+    sort_order: Number(id.split("-")[1]),
+    is_published: true,
+  };
+}
+
 export const seedGallery: GalleryImage[] = [
-  {
-    id: "g-1",
-    image_url: "/images/gallery-paradiso.jpg",
-    alt: "A guest at Paradiso against the red velvet wall",
-    category: "Paradiso",
-    width: 1191,
-    height: 1152,
-    sort_order: 1,
-    is_published: true,
-  },
-  {
-    id: "g-2",
-    image_url: "/images/gallery-eden.jpg",
-    alt: "A guest at Eden against the red velvet wall",
-    category: "Eden",
-    width: 1191,
-    height: 1141,
-    sort_order: 2,
-    is_published: true,
-  },
-  {
-    id: "g-3",
-    image_url: "/images/experience-live.jpg",
-    alt: "A live performance in full flow on the floor",
-    category: "Live Acts",
-    width: 1191,
-    height: 1488,
-    sort_order: 3,
-    is_published: true,
-  },
-  {
-    id: "g-4",
-    image_url: "/images/experience-drinks.jpg",
-    alt: "The room under purple light during service",
-    category: "The Vibe",
-    width: 1191,
-    height: 1477,
-    sort_order: 4,
-    is_published: true,
-  },
-  {
-    id: "g-5",
-    image_url: "/images/event-paradiso.jpg",
-    alt: "Paradiso event artwork",
-    category: "Paradiso",
-    width: 1141,
-    height: 1407,
-    sort_order: 5,
-    is_published: true,
-  },
-  {
-    id: "g-6",
-    image_url: "/images/event-delilah.jpg",
-    alt: "Delilah event artwork",
-    category: "Live Acts",
-    width: 1141,
-    height: 1416,
-    sort_order: 6,
-    is_published: true,
-  },
+  img("g-1",  "/images/venue-bar-draught.jpg",   "The whiskey wall behind the bar, poured cold", "The Bar",   1290, 1722),
+  img("g-2",  "/images/venue-murals.jpg",        "Hand-painted murals along the booth wall",     "The Room",  1290, 1721),
+  img("g-3",  "/images/venue-booths.jpg",        "Lounge booths under the mirrored ceiling",     "The Room",  1290, 1721),
+  img("g-4",  "/images/venue-terrace.jpg",       "The terrace side of the floor by day",         "The Room",  1290, 1726),
+  img("g-5",  "/images/venue-bar-stools.jpg",    "Bar stools along the marble counter",          "The Bar",   1290,  967),
+  img("g-6",  "/images/venue-wings.jpg",         "Wings off the grill, plated to order",         "The Grill", 1290, 1736),
+  img("g-7",  "/images/experience-live.jpg",     "A live set in full flow on the floor",         "Live Acts", 1191, 1029),
+  img("g-8",  "/images/experience-drinks.jpg",   "The room under purple light during service",   "Live Acts", 1191, 1025),
+  img("g-9",  "/images/vibe-themed-nights.jpg",  "A themed night on the floor",                  "Live Acts", 1191, 1055),
+  img("g-10", "/images/room-purple.jpg",         "A guest on the floor under purple light",      "Live Acts",  556,  699),
+  img("g-11", "/images/gallery-paradiso.jpg",    "A guest at Paradiso against the red velvet",   "Paradiso",  1191, 1029),
+  img("g-12", "/images/gallery-eden.jpg",        "A guest at Eden against the red velvet",       "Eden",      1191, 1025),
+  img("g-13", "/images/ig-red-dress.jpg",        "Red on red against the velvet wall",           "Paradiso",  1290, 1727),
+  img("g-14", "/images/ig-suit.jpg",             "Suited and shaded against the velvet wall",    "Eden",      1290, 1639),
+  img("g-15", "/images/ig-red-light.jpg",        "Under the red light in the booth",             "Eden",      1290, 1657),
+  img("g-16", "/images/event-paradiso.jpg",      "Paradiso event artwork",                       "Events",    1141, 1407),
+  img("g-17", "/images/event-friday.jpg",        "Friday event artwork",                         "Events",    1141, 1417),
+  img("g-18", "/images/event-one-night.jpg",     "One Night Only event artwork",                 "Events",    1141, 1417),
+  img("g-19", "/images/event-delilah.jpg",       "Delilah event artwork",                        "Events",    1141, 1416),
+  img("g-20", "/images/event-daughters.jpg",     "Daughters of Eve event artwork",               "Events",    1141, 1420),
 ];
 
 /* ------------------------------------------------------------ testimonials */

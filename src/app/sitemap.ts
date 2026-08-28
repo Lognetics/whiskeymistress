@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "#reservations",
     "#private-events",
     "#contact",
+    "#careers",
   ];
 
   return sections.map((section) => ({

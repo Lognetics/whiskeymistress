@@ -21,6 +21,10 @@ do $$ begin
   create type inquiry_status as enum ('new', 'in_progress', 'won', 'lost');
 exception when duplicate_object then null; end $$;
 
+do $$ begin
+  create type application_status as enum ('new', 'reviewing', 'hired', 'rejected');
+exception when duplicate_object then null; end $$;
+
 -- --------------------------------------------------------------- staff acl
 
 -- A row here grants dashboard access. Create the auth user first (Dashboard →
@@ -212,6 +216,18 @@ create table if not exists private_event_inquiries (
   created_at timestamptz not null default now()
 );
 
+create table if not exists job_applications (
+  id uuid primary key default gen_random_uuid(),
+  full_name text not null,
+  email text not null,
+  phone text not null,
+  position text not null,
+  resume_url text,
+  previous_employment text,
+  status application_status not null default 'new',
+  created_at timestamptz not null default now()
+);
+
 create table if not exists newsletter_subscribers (
   id uuid primary key default gen_random_uuid(),
   email text not null unique,
@@ -236,6 +252,7 @@ alter table announcements enable row level security;
 alter table opening_hours enable row level security;
 alter table reservations enable row level security;
 alter table private_event_inquiries enable row level security;
+alter table job_applications enable row level security;
 alter table newsletter_subscribers enable row level security;
 
 do $$
@@ -266,7 +283,8 @@ begin
 
   -- Guest submissions: insert-only for the public.
   foreach t in array array[
-    'reservations', 'private_event_inquiries', 'newsletter_subscribers'
+    'reservations', 'private_event_inquiries', 'newsletter_subscribers',
+    'job_applications'
   ] loop
     execute format('drop policy if exists %I_public_insert on %I', t, t);
     execute format('create policy %I_public_insert on %I for insert with check (true)', t, t);

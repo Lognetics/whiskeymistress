@@ -183,6 +183,20 @@ export interface PrivateEventInquiry {
   created_at: string;
 }
 
+export type ApplicationStatus = "new" | "reviewing" | "hired" | "rejected";
+
+export interface JobApplication {
+  id: string;
+  full_name: string;
+  email: string;
+  phone: string;
+  position: string;
+  resume_url: string | null;
+  previous_employment: string | null;
+  status: ApplicationStatus;
+  created_at: string;
+}
+
 export interface NewsletterSubscriber {
   id: string;
   email: string;

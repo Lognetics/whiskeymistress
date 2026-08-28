@@ -15,6 +15,7 @@ const LINKS = [
   { href: "#gallery", label: "Gallery" },
   { href: "#reservations", label: "Claims" },
   { href: "#contact", label: "Contact" },
+  { href: "#careers", label: "Careers" },
 ] as const;
 
 interface NavbarProps {

@@ -66,3 +66,10 @@ export const INQUIRY_STATUS_OPTIONS = [
   { value: "won", label: "Won" },
   { value: "lost", label: "Lost" },
 ];
+
+export const APPLICATION_STATUS_OPTIONS = [
+  { value: "new", label: "New" },
+  { value: "reviewing", label: "Reviewing" },
+  { value: "hired", label: "Hired" },
+  { value: "rejected", label: "Rejected" },
+];

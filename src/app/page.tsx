@@ -1,4 +1,5 @@
 import { About } from "@/components/site/About";
+import { CareersForm } from "@/components/site/CareersForm";
 import { Contact } from "@/components/site/Contact";
 import { Events } from "@/components/site/Events";
 import { Experiences } from "@/components/site/Experiences";
@@ -163,6 +164,15 @@ export default async function HomePage() {
           className="bg-[linear-gradient(180deg,transparent,rgba(26,26,26,0.6),transparent)]"
         >
           <Contact settings={settings} hours={hours} />
+        </Section>
+
+        <Section
+          id="careers"
+          eyebrow="Join The Team"
+          title="Careers"
+          intro="We're always looking for talented people who love hospitality. Tell us about yourself."
+        >
+          <CareersForm />
         </Section>
       </main>
 

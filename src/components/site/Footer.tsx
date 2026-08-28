@@ -14,6 +14,7 @@ const QUICK_LINKS = [
   { href: "#gallery", label: "Gallery" },
   { href: "#reservations", label: "Claim a Table" },
   { href: "#contact", label: "Contact" },
+  { href: "#careers", label: "Careers" },
 ] as const;
 
 export function Footer({ settings }: { settings: SiteSettings }) {

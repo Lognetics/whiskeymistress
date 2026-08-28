@@ -493,6 +493,39 @@ export async function importSeedCatalogue(
 
 /* ------------------------------------------------------------------ signout */
 
+export async function updateApplicationStatus(
+  _prev: AdminState,
+  formData: FormData,
+): Promise<AdminState> {
+  try {
+    await requireStaff();
+  } catch (error) {
+    return {
+      status: "error",
+      message: error instanceof Error ? error.message : "Not authorized.",
+    };
+  }
+
+  const id = String(formData.get("id") ?? "");
+  const status = String(formData.get("status") ?? "");
+  const supabase = await createServerSupabase();
+  if (!supabase || !id) {
+    return { status: "error", message: "Database is not connected." };
+  }
+
+  const { error } = await supabase
+    .from("job_applications")
+    .update({ status })
+    .eq("id", id);
+
+  if (error) return { status: "error", message: error.message };
+
+  revalidatePath("/admin/careers");
+  return { status: "success", message: "Application updated." };
+}
+
+/* ------------------------------------------------------------------ signout */
+
 export async function signOut() {
   const supabase = await createServerSupabase();
   await supabase?.auth.signOut();

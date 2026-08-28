@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Briefcase,
   CalendarDays,
   ChefHat,
   Clock,
@@ -24,6 +25,7 @@ const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
   { href: "/admin/reservations", label: "Reservations", icon: CalendarDays },
   { href: "/admin/inquiries", label: "Private Events", icon: Mail },
+  { href: "/admin/careers", label: "Applications", icon: Briefcase },
   { href: "/admin/menu", label: "Menu", icon: ChefHat },
   { href: "/admin/categories", label: "Categories", icon: Tags },
   { href: "/admin/experiences", label: "Experiences", icon: Sparkles },

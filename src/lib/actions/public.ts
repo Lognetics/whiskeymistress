@@ -4,6 +4,7 @@ import { createAdminSupabase, createServerSupabase } from "@/lib/supabase/server
 import type { FormState } from "./state";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import {
+  applicationSchema,
   fieldErrors,
   inquirySchema,
   newsletterSchema,
@@ -132,6 +133,56 @@ export async function submitInquiry(
     status: "success",
     message:
       "Enquiry received. Our events team will be in touch within one business day with availability and a proposal.",
+  };
+}
+
+export async function submitApplication(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const values = readValues(formData);
+  const parsed = applicationSchema.safeParse(Object.fromEntries(formData));
+
+  if (!parsed.success) {
+    return {
+      status: "error",
+      message: "Please check the highlighted fields and try again.",
+      errors: fieldErrors(parsed.error),
+      values,
+    };
+  }
+
+  if (parsed.data.company_website) {
+    return { status: "success", message: "Thank you — your application has been received." };
+  }
+
+  const { company_website: _hp, ...row } = parsed.data;
+
+  if (!isSupabaseConfigured) {
+    return { status: "success", message: PREVIEW_NOTE };
+  }
+
+  const supabase = writeClient() ?? (await createServerSupabase());
+  if (!supabase) return { status: "success", message: PREVIEW_NOTE };
+
+  const { error } = await supabase.from("job_applications").insert({
+    ...row,
+    resume_url: row.resume_url || null,
+    previous_employment: row.previous_employment || null,
+  });
+
+  if (error) {
+    return {
+      status: "error",
+      message: "We could not send your application. Please email us instead.",
+      values,
+    };
+  }
+
+  return {
+    status: "success",
+    message:
+      "Application received. If your experience fits an opening, our team will be in touch.",
   };
 }
 

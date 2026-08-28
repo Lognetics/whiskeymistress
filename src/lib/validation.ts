@@ -69,6 +69,22 @@ export const inquirySchema = z.object({
   company_website: z.string().max(0).optional().or(z.literal("")),
 });
 
+export const applicationSchema = z.object({
+  full_name: trimmed(2, 120, "Full name"),
+  email: z.string().trim().email("Enter a valid email address").max(160),
+  phone,
+  position: trimmed(1, 80, "Position"),
+  resume_url: z
+    .string()
+    .trim()
+    .max(500)
+    .refine((v) => v === "" || /^https?:\/\//.test(v), "Enter a link starting with http")
+    .optional()
+    .or(z.literal("")),
+  previous_employment: z.string().trim().max(2000).optional().or(z.literal("")),
+  company_website: z.string().max(0).optional().or(z.literal("")),
+});
+
 export const newsletterSchema = z.object({
   email: z.string().trim().email("Enter a valid email address").max(160),
 });

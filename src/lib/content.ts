@@ -22,6 +22,7 @@ import type {
   MenuItem,
   MenuSection,
   OpeningHour,
+  JobApplication,
   PrivateEventInquiry,
   Reservation,
   SiteContent,
@@ -330,6 +331,19 @@ export async function getInquiries() {
     .limit(300);
 
   return (data ?? []) as PrivateEventInquiry[];
+}
+
+export async function getApplications() {
+  const supabase = await createServerSupabase();
+  if (!supabase) return [] as JobApplication[];
+
+  const { data } = await supabase
+    .from("job_applications")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(300);
+
+  return (data ?? []) as JobApplication[];
 }
 
 export async function getSubscriberCount() {
