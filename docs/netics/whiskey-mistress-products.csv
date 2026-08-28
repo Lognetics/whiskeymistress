@@ -1,0 +1,42 @@
+Name,Price (NGN),Category,Section,Description,Available
+Glenfiddich 23yrs,1100000,Whiskey,Bottle Service,,yes
+Glenfiddich 21yrs,890000,Whiskey,Bottle Service,,yes
+Glenfiddich 18yrs,390000,Whiskey,Bottle Service,,yes
+Glenlivet 18yrs,390000,Whiskey,Bottle Service,,yes
+Glenlivet 15yrs,320000,Whiskey,Bottle Service,,yes
+Glenlivet 12yrs,290000,Whiskey,Bottle Service,,yes
+Johnnie Walker 18yrs,390000,Whiskey,Bottle Service,,yes
+Hennessy X.O,890000,Cognac,Bottle Service,,yes
+Martell X.O,860000,Cognac,Bottle Service,,yes
+Remy Martin XO,650000,Cognac,Bottle Service,,yes
+Hennessy VSOP,310000,Cognac,Bottle Service,,yes
+Martell Blueswift,290000,Cognac,Bottle Service,,yes
+Dom Perignon Brut,1100000,Bubbly,Bottle Service,,yes
+Ace of Spades Brut,970000,Bubbly,Bottle Service,,yes
+Veuve Rich,420000,Bubbly,Bottle Service,,yes
+Moet Ice Imperial,400000,Bubbly,Bottle Service,,yes
+Moet Imperial Rose,380000,Bubbly,Bottle Service,,yes
+Moet Nectar Imperial,340000,Bubbly,Bottle Service,,yes
+Belaire Rose Fantome,270000,Bubbly,Bottle Service,,yes
+Don Julio 1942,990000,Spirits,Bottle Service,,yes
+Casamigos Reposado,550000,Spirits,Bottle Service,,yes
+Volcan Blanco,250000,Spirits,Bottle Service,,yes
+Goat Thigh,26300,Grills,Grills,,yes
+Lamb Chops,24500,Grills,Grills,,yes
+Whole Chicken,19500,Grills,Grills,,yes
+Prawns,15500,Grills,Grills,,yes
+French Fries,3500,Grills,Grills,,yes
+Whiskey Long Island,12500,Cocktails,Cocktails,"Whiskey, rum, gin, tequila, vodka, cointreau, coke and lime.",yes
+Whiskey Sour,7500,Cocktails,Cocktails,"Bourbon whisky, egg whites, fresh lemon juice, gomme syrup.",yes
+Apple Juice,10000,Beverages,Beverages,,yes
+Red Bull,6000,Beverages,Beverages,,yes
+Voss Water,4000,Beverages,Beverages,,yes
+Heineken,4000,Beverages,Beverages,,yes
+Tomi Cranberry,2000,Beverages,Beverages,,yes
+Tonic Water,2000,Beverages,Beverages,,yes
+Coke,2000,Beverages,Beverages,,yes
+Sprite,2000,Beverages,Beverages,,yes
+Nestle Water,1000,Beverages,Beverages,,yes
+Vape,25000,Puffs,Puffs,,yes
+Shisha,20000,Puffs,Puffs,,yes
+Cigarette,3000,Puffs,Puffs,,yes
