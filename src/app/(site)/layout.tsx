@@ -1,6 +1,7 @@
 import { FloatingActions } from "@/components/site/FloatingActions";
 import { Footer } from "@/components/site/Footer";
 import { Navbar } from "@/components/site/Navbar";
+import { NeticsAgent } from "@/components/site/NeticsAgent";
 import { StructuredData } from "@/components/site/StructuredData";
 import {
   getAnnouncement,
@@ -39,6 +40,7 @@ export default async function SiteLayout({
 
       <Footer settings={settings} />
       <FloatingActions whatsapp={settings.whatsapp} />
+      <NeticsAgent />
     </>
   );
 }
