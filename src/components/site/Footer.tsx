@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import type { SiteSettings } from "@/lib/types";
 
 const QUICK_LINKS = [
+  { href: "/", label: "Home" },
   { href: "/vibe", label: "The Vibe" },
   { href: "/menu", label: "Our Menu" },
   { href: "/live-acts", label: "Live Acts" },

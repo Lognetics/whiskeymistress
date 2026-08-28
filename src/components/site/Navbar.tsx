@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import type { Announcement } from "@/lib/types";
 
 const LINKS = [
+  { href: "/", label: "Home" },
   { href: "/vibe", label: "The Vibe" },
   { href: "/menu", label: "Liquid Assets" },
   { href: "/live-acts", label: "Live Acts" },
@@ -120,7 +121,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
           <div className="flex items-center gap-3">
             <a
               href={`tel:${phone.replace(/\s/g, "")}`}
-              className="hidden items-center gap-2 font-ui text-[0.646rem] text-warm/75 transition-colors hover:text-gold lg:flex"
+              className="hidden items-center gap-2 font-ui text-[0.646rem] text-warm/75 transition-colors hover:text-gold 2xl:flex"
             >
               <Phone className="size-3.5" aria-hidden />
               {phone}
