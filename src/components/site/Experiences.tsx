@@ -47,7 +47,7 @@ export function Experiences({ experiences }: { experiences: Experience[] }) {
               ) : null}
 
               <Link
-                href="#reservations"
+                href="/reservations"
                 className="mt-6 inline-flex items-center gap-2 self-start font-ui text-[0.629rem] uppercase tracking-[0.2em] text-champagne transition-colors hover:text-gold"
               >
                 {experience.cta_label}

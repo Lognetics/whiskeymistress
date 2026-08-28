@@ -6,15 +6,15 @@ import { ButtonLink } from "@/components/ui/Button";
 import type { SiteSettings } from "@/lib/types";
 
 const QUICK_LINKS = [
-  { href: "#vibe", label: "The Vibe" },
-  { href: "#experience", label: "The Experience" },
-  { href: "#menu", label: "Our Menu" },
-  { href: "#live-acts", label: "Live Acts" },
-  { href: "#events", label: "Events" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#reservations", label: "Claim a Table" },
-  { href: "#contact", label: "Contact" },
-  { href: "#careers", label: "Careers" },
+  { href: "/vibe", label: "The Vibe" },
+  { href: "/menu", label: "Our Menu" },
+  { href: "/live-acts", label: "Live Acts" },
+  { href: "/events", label: "Events" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/reservations", label: "Claim a Table" },
+  { href: "/private-events", label: "Private Events" },
+  { href: "/contact", label: "Contact" },
+  { href: "/careers", label: "Careers" },
 ] as const;
 
 export function Footer({ settings }: { settings: SiteSettings }) {
@@ -34,14 +34,14 @@ export function Footer({ settings }: { settings: SiteSettings }) {
           <h2 className="max-w-2xl font-display text-[clamp(1.36rem,2.89vw,2.125rem)] leading-tight text-warm">
 Tonight deserves a better story.
           </h2>
-          <ButtonLink href="#reservations" size="lg">
+          <ButtonLink href="/reservations" size="lg">
             Get Access
           </ButtonLink>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Link href="#top" className="inline-flex flex-col leading-none">
+            <Link href="/" className="inline-flex flex-col leading-none">
               <Image
                 src="/images/logo-wordmark.png"
                 alt={settings.brand_name}

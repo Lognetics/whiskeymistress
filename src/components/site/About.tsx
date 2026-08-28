@@ -97,9 +97,9 @@ export function About({ settings }: { settings: SiteSettings }) {
 
           <Reveal delay={0.36}>
             <div className="mt-10 flex flex-wrap gap-4">
-              <ButtonLink href="#reservations">Reserve a Table</ButtonLink>
-              <ButtonLink href="#experiences" variant="outline">
-                View Experiences
+              <ButtonLink href="/reservations">Reserve a Table</ButtonLink>
+              <ButtonLink href="/menu" variant="outline">
+                See the Menu
               </ButtonLink>
             </div>
           </Reveal>

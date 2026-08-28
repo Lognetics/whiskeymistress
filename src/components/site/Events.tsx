@@ -137,7 +137,7 @@ export function Events({ events }: { events: VenueEvent[] }) {
                 ) : null}
 
                 <Link
-                  href="#reservations"
+                  href="/reservations"
                   className="mt-6 rounded-full border border-gold/40 px-6 py-3 text-center font-ui text-[0.612rem] uppercase tracking-[0.2em] text-champagne transition-all duration-500 hover:border-gold hover:bg-gold/10"
                 >
                   Reserve

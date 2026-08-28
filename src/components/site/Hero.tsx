@@ -137,13 +137,13 @@ export function Hero({ headline, subheadline, tagline, videoUrl }: HeroProps) {
           transition={{ duration: 0.9, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <Link
-            href="#reservations"
+            href="/reservations"
             className="rounded-full bg-[linear-gradient(100deg,#a9862a_0%,#d4af37_35%,#f0e2c0_50%,#d4af37_65%,#a9862a_100%)] bg-[length:200%_auto] px-10 py-4 font-ui text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink shadow-[0_18px_50px_-18px_rgba(212,175,55,0.8)] transition-all duration-500 hover:bg-[position:right_center] hover:shadow-[0_26px_70px_-18px_rgba(212,175,55,0.95)]"
           >
             Get Access
           </Link>
           <Link
-            href="#menu"
+            href="/menu"
             className="rounded-full border border-gold/40 px-10 py-4 font-ui text-[0.68rem] uppercase tracking-[0.2em] text-champagne backdrop-blur-sm transition-all duration-500 hover:border-gold hover:bg-gold/10"
           >
             See the Menu
@@ -152,7 +152,7 @@ export function Hero({ headline, subheadline, tagline, videoUrl }: HeroProps) {
       </motion.div>
 
       <motion.a
-        href="#vibe"
+        href="/vibe"
         aria-label="Scroll to explore"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/70 transition-colors hover:text-gold"
         initial={{ opacity: 0 }}

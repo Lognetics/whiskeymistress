@@ -44,7 +44,7 @@ export function FloatingActions({ whatsapp }: { whatsapp: string }) {
           </a>
 
           <Link
-            href="#reservations"
+            href="/reservations"
             className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(100deg,#a9862a,#d4af37,#a9862a)] bg-[length:200%_auto] px-6 py-3.5 font-ui text-[0.629rem] font-medium uppercase tracking-[0.18em] text-ink shadow-[0_18px_45px_-18px_rgba(212,175,55,0.85)] transition-all duration-500 hover:bg-[position:right_center]"
           >
             <CalendarCheck className="size-4" aria-hidden />

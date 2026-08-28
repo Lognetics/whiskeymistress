@@ -53,7 +53,7 @@ export const seedAnnouncement: Announcement = {
   id: "seed-announcement",
   message: "Open Wednesday – Sunday · Doors at 8PM. Tables go fast.",
   link_label: "Get Access",
-  link_href: "#reservations",
+  link_href: "/reservations",
   starts_at: null,
   ends_at: null,
   is_published: true,

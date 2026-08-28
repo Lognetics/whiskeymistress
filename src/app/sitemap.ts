@@ -1,27 +1,27 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site-url";
 
-
-/** Single-page site — the anchors are listed so each section can be surfaced. */
+/** One entry per public route. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const sections = [
-    "",
-    "#vibe",
-    "#experience",
-    "#menu",
-    "#live-acts",
-    "#events",
-    "#gallery",
-    "#reservations",
-    "#private-events",
-    "#contact",
-    "#careers",
+  const routes: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
+    { path: "", priority: 1, changeFrequency: "weekly" },
+    { path: "/vibe", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/menu", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/live-acts", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/events", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/gallery", priority: 0.6, changeFrequency: "monthly" },
+    { path: "/reservations", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/private-events", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/careers", priority: 0.5, changeFrequency: "monthly" },
   ];
 
-  return sections.map((section) => ({
-    url: `${siteUrl}/${section}`,
-    lastModified: new Date(),
-    changeFrequency: section === "#events" ? "weekly" : "monthly",
-    priority: section === "" ? 1 : 0.7,
+  const lastModified = new Date();
+
+  return routes.map(({ path, priority, changeFrequency }) => ({
+    url: `${siteUrl}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
   }));
 }

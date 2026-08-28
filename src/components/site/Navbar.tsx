@@ -2,20 +2,21 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Announcement } from "@/lib/types";
 
 const LINKS = [
-  { href: "#vibe", label: "The Vibe" },
-  { href: "#menu", label: "Liquid Assets" },
-  { href: "#live-acts", label: "Live Acts" },
-  { href: "#events", label: "Events" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#reservations", label: "Claims" },
-  { href: "#contact", label: "Contact" },
-  { href: "#careers", label: "Careers" },
+  { href: "/vibe", label: "The Vibe" },
+  { href: "/menu", label: "Liquid Assets" },
+  { href: "/live-acts", label: "Live Acts" },
+  { href: "/events", label: "Events" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/reservations", label: "Claims" },
+  { href: "/contact", label: "Contact" },
+  { href: "/careers", label: "Careers" },
 ] as const;
 
 interface NavbarProps {
@@ -27,7 +28,7 @@ interface NavbarProps {
 export function Navbar({ brandName, phone, announcement }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("");
+  const pathname = usePathname();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (value) => {
@@ -43,28 +44,6 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
       document.body.style.overflow = overflow;
     };
   }, [open]);
-
-  // Highlight the section currently in view.
-  useEffect(() => {
-    const sections = LINKS.map((link) =>
-      document.querySelector<HTMLElement>(link.href),
-    ).filter((el): el is HTMLElement => Boolean(el));
-
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`#${visible.target.id}`);
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.2, 0.5] },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
@@ -99,7 +78,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
           style={{ height: "var(--nav-height)" }}
         >
           <Link
-            href="#top"
+            href="/"
             className="group flex flex-col leading-none"
             aria-label={`${brandName} home`}
           >
@@ -118,15 +97,15 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  aria-current={active === link.href ? "true" : undefined}
+                  aria-current={pathname === link.href ? "true" : undefined}
                   className={`relative rounded-full px-3.5 py-2 font-ui text-[0.629rem] uppercase tracking-[0.16em] transition-colors duration-300 ${
-                    active === link.href
+                    pathname === link.href
                       ? "text-gold"
                       : "text-warm/70 hover:text-warm"
                   }`}
                 >
                   {link.label}
-                  {active === link.href ? (
+                  {pathname === link.href ? (
                     <motion.span
                       layoutId="nav-active"
                       className="absolute inset-x-3.5 -bottom-0.5 h-px bg-gold"
@@ -148,7 +127,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
             </a>
 
             <Link
-              href="#reservations"
+              href="/reservations"
               className="hidden rounded-full bg-[linear-gradient(100deg,#a9862a,#d4af37,#a9862a)] bg-[length:200%_auto] px-6 py-2.5 font-ui text-[0.629rem] font-medium uppercase tracking-[0.16em] text-ink transition-all duration-500 hover:bg-[position:right_center] sm:block"
             >
               Get Access
@@ -204,7 +183,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
               transition={{ delay: 0.4, duration: 0.4 }}
             >
               <Link
-                href="#reservations"
+                href="/reservations"
                 onClick={() => setOpen(false)}
                 className="rounded-full bg-gold px-8 py-4 text-center font-ui text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink"
               >
