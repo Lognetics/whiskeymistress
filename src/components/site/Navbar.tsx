@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 import { Menu, Phone, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Announcement } from "@/lib/types";
 
 const LINKS = [
@@ -29,12 +29,29 @@ interface NavbarProps {
 export function Navbar({ brandName, phone, announcement }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [drawerTop, setDrawerTop] = useState(0);
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (value) => {
     setScrolled(value > 40);
   });
+
+  // Anchor the drawer to the header's real bottom edge rather than the top of
+  // the viewport, so a long link list can never ride up under the wordmark.
+  useEffect(() => {
+    if (!open) return;
+    const measure = () =>
+      setDrawerTop(headerRef.current?.getBoundingClientRect().bottom ?? 0);
+    measure();
+    window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("orientationchange", measure);
+    };
+  }, [open]);
 
   // Lock the page behind the mobile drawer.
   useEffect(() => {
@@ -67,6 +84,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
       ) : null}
 
       <motion.header
+        ref={headerRef}
         className={`sticky top-0 z-50 no-print transition-all duration-500 ${
           scrolled
             ? "glass border-b border-line shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)]"
@@ -152,12 +170,15 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
         {open ? (
           <motion.div
             id="mobile-nav"
-            className="fixed inset-0 z-40 flex flex-col justify-center bg-ink/97 px-8 backdrop-blur-2xl xl:hidden"
+            className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto overscroll-contain bg-ink/97 backdrop-blur-2xl xl:hidden"
+            style={{ top: drawerTop }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
+            {/* Centres when it fits, scrolls when it does not. */}
+            <div className="flex min-h-full flex-col justify-center px-8 py-8">
             <ul className="flex flex-col gap-1">
               {LINKS.map((link, i) => (
                 <motion.li
@@ -169,7 +190,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-white/6 py-4 font-display text-2xl text-warm transition-colors hover:text-gold"
+                    className="block border-b border-white/6 py-3.5 font-display text-xl text-warm transition-colors hover:text-gold"
                   >
                     {link.label}
                   </Link>
@@ -178,7 +199,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
             </ul>
 
             <motion.div
-              className="mt-10 flex flex-col gap-3"
+              className="mt-8 flex flex-col gap-3"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.4 }}
@@ -197,6 +218,7 @@ export function Navbar({ brandName, phone, announcement }: NavbarProps) {
                 {phone}
               </a>
             </motion.div>
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>
